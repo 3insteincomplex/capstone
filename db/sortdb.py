@@ -11,8 +11,6 @@ db = client.get_default_database()
 histo = db['hist_rec']
 
 for doc in histo.find().sort([
-        ("year", pymongo.DESCENDING),
-        ("month", pymongo.DESCENDING),
-        ("day", pymongo.DESCENDING)
+        ("date", pymongo.DESCENDING)
         ]):
     print(doc)
