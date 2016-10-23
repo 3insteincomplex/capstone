@@ -13,6 +13,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="../bootstrap/js/bootstrap.min.js"></script>
     <script src="../static/js/moment.min.js"></script>
+    <script src="../static/js/interactive-table.js"></script>
     <!-- Plotly.js -->
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <!-- PlotlyFinance.js -->
@@ -91,85 +92,19 @@
 
 <!-- start main -->
 <div class="main-section col-xs-12">
+  <!-- start news browser -->
   <div class="col-md-4 col-xs-12">
-    <div class="panel panel-default">
-      <!-- Default panel contents: put stuff here from Jinja -->
-      <div class="panel-heading">Stock History</div>
+    <div class=""></div>
 
-      <!-- Table: There would a loop here in Jinja -->
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Date</th><th>Low</th><th>High</th><th>Open</th><th>Close</th>
-          </tr>
-        </thead>
-        <!-- start loop here with Jinja -->
-        <tbody>
-          <tr>
-            <th scope="row">01/10/2016</th><td>Mark</td><td>Otto</td><td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">02/10/2016</th><td>Jacob</td><td>Thornton</td><td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">03/10/2016</th><td>Larry</td><td>the Bird</td><td>@twitter</td>
-          </tr>
-          <tr>
-            <th scope="row">04/10/2016</th><td>Larry</td><td>the Bird</td><td>@twitter</td>
-          </tr>
-          <tr>
-            <th scope="row">05/10/2016</th><td>Larry</td><td>the Bird</td><td>@twitter</td>
-          </tr>
-          <tr>
-            <th scope="row">06/10/2016</th><td>Larry</td><td>the Bird</td><td>@twitter</td>
-          </tr>
-          <tr>
-            <th scope="row">07/10/2016</th><td>Larry</td><td>the Bird</td><td>@twitter</td>
-          </tr>
-          <tr>
-            <th scope="row">08/10/2016</th><td>Larry</td><td>the Bird</td><td>@twitter</td>
-          </tr>
-          <tr>
-            <th scope="row">09/10/2016</th><td>Larry</td><td>the Bird</td><td>@twitter</td>
-          </tr>
-          <tr>
-            <th scope="row">10/10/2016</th><td>Larry</td><td>the Bird</td><td>@twitter</td>
-          </tr>
-          <tr>
-            <th scope="row">11/10/2016</th><td>Larry</td><td>the Bird</td><td>@twitter</td>
-          </tr>
-          <tr>
-            <th scope="row">12/10/2016</th><td>Larry</td><td>the Bird</td><td>@twitter</td>
-          </tr>
-          <tr>
-            <th scope="row">13/10/2016</th><td>Larry</td><td>the Bird</td><td>@twitter</td>
-          </tr>
-          <tr>
-            <th scope="row">14/10/2016</th><td>Larry</td><td>the Bird</td><td>@twitter</td>
-          </tr>
-          <tr>
-            <th scope="row">15/10/2016</th><td>Larry</td><td>the Bird</td><td>@twitter</td>
-          </tr>
-          <tr>
-            <th scope="row">16/10/2016</th><td>Larry</td><td>the Bird</td><td>@twitter</td>
-          </tr>
-        </tbody>
-        <!-- end loop here with Jinja -->
-      </table>
-    </div>
   </div>
-  <!-- multiple line charts see: http://www.tylernwolf.com/?utm_source=d3_org&utm_medium=demo_link&utm_campaign=d3_website#/portfolio/corrdisp-->
+  <!-- end news browser -->
+
+  <!-- start news content -->
   <div class="main-content col-md-8 col-xs-12">
-    <div id="myDiv"><!-- Plotly chart will be drawn inside this DIV --></div>
+
+
   </div>
-  <div class="description col-md-8 col-xs-12">
-    <div class="well">
-      <h5>Market Sentiment: <span class="label label-success">Bullish</span></h5>
-      <p>For the duration of 30 days, stock for company BHP Billiton <span class="label label-primary">ASX200: BHP</span> has <span class="label label-success">increased by 5.54%.</span></p>
-      <p>For the given time, it showed relatively <span class="label label-success">low volatility</span> of 8.5%, when compared to the ASX200 average of 18.5%, which is 10.0% <span class="label label-success">lower than average</span>. </p>
-      <p>High was achieved on 2/10/2014 and was <span class="label label-success">$AU132.50</span>, lowest prices was <span class="label label-danger">$AU146.50</span> on the 1/9/2014. Overall, stock has increased in prices 24 times and decreased in price 6 times.</p>
-    </div>
-  </div>
+  <!-- end news content -->
 </div>
 <!-- end main -->
 

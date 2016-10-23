@@ -20,7 +20,7 @@ def get_price(company):
         print(item)
     return "done"
 
-@app.route('/get_history/<string:company>+date=<string:y_s>-<string:m_s>-<string:d_s>to<string:y_e>-<string:m_e>-<string:d_e>')
+@app.route('/get_history/<string:company>+from=<string:y_s>-<string:m_s>-<string:d_s>to=<string:y_e>-<string:m_e>-<string:d_e>')
 def get_hist(company, y_s, m_s, d_s, y_e, m_e, d_e):
     cc = search(company)
     qu = query(cc, y_s, m_s, d_s, y_e, m_e, d_e)
