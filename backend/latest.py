@@ -7,8 +7,8 @@ Created on Thu Oct 20 11:35:26 2016
 
 import ystockquote as ysq
 
-def latest_prices(company_code):
-    ccode = str(company_code + ".AX")
+def latest_prices(company):
+    ccode = str(company + ".AX")
     latest = []
     
     close = ysq.get_price(ccode)
@@ -18,15 +18,8 @@ def latest_prices(company_code):
     vol = ysq.get_volume(ccode)
     vol_avg = ysq.get_avg_daily_volume(ccode)
        
-    latest.append(close)
-    latest.append(change)
-    latest.append(year_hi)
-    latest.append(year_lo)
-    latest.append(vol)
-    latest.append(vol_avg)    
+    latest.extend([close,change,year_hi,year_lo,vol,vol_avg])    
     
     return latest 
-    
-    
     
      

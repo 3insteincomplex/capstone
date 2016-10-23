@@ -1,0 +1,245 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Profile</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='Profile.css') }}">
+<style>@import 'https://fonts.googleapis.com/css?family=Raleway';</style>
+
+<script src="jquery-3.1.0.min.js"></script>
+<script>
+$(document).ready(function() {
+	
+});
+</script>
+
+</head>
+<body>
+
+<div id="container">
+
+	<header id="header">
+			
+			<div id="logo">
+			
+				<a href="Home.html">&nbsp;</a>
+				
+			</div>
+			
+			<div id="topLogin">
+			
+				<Strong>Welcome!</Strong>
+			
+			</div>
+			
+			<div id="links">
+			
+				<ul id="menu">
+			
+					<li>
+						<a href="/get_code">
+							ASX Directory
+						</a>
+					</li
+					
+					><li>
+						<a href="About.html">
+							About This App
+						</a>
+					</li
+				
+					><li>
+						<a href="Help.html">
+							Help Guide
+						</a>
+					</li>
+			
+				</ul>
+				
+			</div>
+		
+	</header>
+			
+	<div id="content">
+	
+		<img id="bImage" src="bodyTall.png"/>
+		
+		<div id="dataHold">
+
+			<ul id="dataMenu">
+			
+				<li id="first">
+				
+					<form>
+						<input id="search" type="search" name="search" placeholder="Search">
+						<input type="submit">
+					</form>
+				
+				</li>
+				
+				<li>
+					<a id="activeStub" href="get_latest/<string:company_name>">
+					Profile Stub
+					</a>
+				</li>
+				
+				<li>
+					<a href="/">
+					Sector Stub
+					</a>
+				</li>
+				
+				<li>
+					<a href="/">
+					News Stub
+					</a>
+				</li>
+				
+				<li>
+					<a href="/get_hist/<string:company_name>">
+					Chart
+					</a>
+				</li>
+			
+			</ul>
+			
+			<div id="innerData">
+				
+				<div id="companyCode">
+				
+					<h1>ASX Code: {{ code }}<br>{{ name }}</h1>
+				
+				</div>
+				
+				<div id="dividend">
+				
+					<h1>Summary</h1>
+				
+				</div>
+				
+				<div id="profile">
+				
+					<h1>Profile</h1>
+				
+				</div>
+				
+				<div id="currentInfo">
+				
+					<table id="CITable">
+						<tr>
+							<th>Current Closing</th>
+							<th>{{ currclose }}</th>
+						</tr>
+						<tr>
+							<th>Previous Closing</th>
+							<th>{{ prevclose }}</th>
+						</tr>
+						<tr>
+							<th>Daily Low</th>
+							<th>{{ dailylo }}</th>
+						</tr>
+						<tr>
+							<th>Daily High</th>
+							<th>{{ dailyhi }}</th>
+						</tr>
+						<tr>
+							<th>Opening Price</th>
+							<th>{{ opening }}</th>
+						</tr>
+					</table>
+				
+				</div>
+				
+				<div id="dividendInfo">
+				
+					<table id="DITable">
+						<tr>
+							<th>Bid</th>
+							<th>{{ bid }}</th>
+						</tr>
+						<tr>
+							<th>Offer</th>
+							<th>{{ offer }}</th>
+						</tr>
+						<tr>
+							<th>Yearly Low</th>
+							<th>{{ yearlo }}</th>
+						</tr>
+						<tr>
+							<th>Yearly High</th>
+							<th>{{ yearhi }}</th>
+						</tr>
+						<tr>
+							<th>Volume Avg</th>
+							<th>{{ vol }}</th>
+						</tr>
+					</table>
+				
+				</div>
+				
+				<div id="profileInfo">
+				
+					<p>
+						profile feature coming soon.
+					</p>
+				
+				</div>
+				
+			</div>
+			
+
+			
+		</div>
+	
+	</div>
+	
+	<footer id="footer">
+	
+		<ul id="botMenu">
+		
+			<li class="smallerFont">
+				<a href="/">
+					SITEMAP
+				</a> 
+			</li>
+			
+			<li>
+				&nbsp|&nbsp
+			</li>
+			
+			<li class="smallerFont">
+				<a href="/">
+					CONTACT US
+				</a>  
+			</li>
+			
+			<li>
+				&nbsp|&nbsp
+			</li>
+			
+			<li class="smallerFont">
+				<a href="/">
+					ABOUT THIS SITE
+				</a> 
+			</li>
+			
+			<li>
+				&nbsp|&nbsp
+			</li>
+			
+			<li class="smallerFont">
+				<a href="/">
+					POWERED BY ERNST & YOUNG
+				</a> 
+			</li>
+			
+		
+		
+		</ul>
+	
+	</footer>
+
+</div>	
+
+</body>
+</html>

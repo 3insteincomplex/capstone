@@ -6,23 +6,26 @@ Created on Tue Aug 23 11:37:57 2016
 """
 from historical import query
 from latest import latest_prices
+from comp_name import search
 from flask import Flask
 
 app = Flask(__name__)
 
 
-@app.route('/get_latest/<string:company_code>')
-def get_price(company_code):
-    late = latest_prices(company_code)
+@app.route('/get_latest/<string:company>')
+def get_price(company):
+    cc = search(company)
+    late = latest_prices(cc)
     for item in late:
-        print (item)
-    return ("done")
+        print(item)
+    return "done"
 
-@app.route('/get_history/<string:company_code>+date=<string:s_y>-<string:s_m>-<string:s_d>to<string:e_y>-<string:e_m>-<string:e_d>')
-def get_hist(company_code, y_s, m_s, d_s, y_e, m_e, d_e):
-    qu = query(company_code, y_s, m_s, d_s, y_e, m_e, d_e)
-    print (qu)
-    return ("done")
+@app.route('/get_history/<string:company>+date=<string:y_s>-<string:m_s>-<string:d_s>to<string:y_e>-<string:m_e>-<string:d_e>')
+def get_hist(company, y_s, m_s, d_s, y_e, m_e, d_e):
+    cc = search(company)
+    qu = query(cc, y_s, m_s, d_s, y_e, m_e, d_e)
+    print(str(qu))
+    return "done"
 
 
 if __name__ == "__main__":

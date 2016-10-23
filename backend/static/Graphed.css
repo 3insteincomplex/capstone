@@ -1,0 +1,442 @@
+html {
+	margin: 0;
+	padding: 0;
+	font-family: 'Raleway', sans-serif;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+/* CLASSES */
+
+.smallerFont {
+	font-size: 11px;
+}
+
+
+
+/* HEADER */
+
+#header {
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	width: 100%;
+	min-width: 600px;
+	min-height: 120px;
+	
+	background-image: url('asdf.png');
+	background-size: cover;
+}
+
+	/* LOGO */
+	
+	#header #logo {
+		margin: 0;
+		padding: 0;
+		position: absolute;
+		width: 20%;
+		min-height: 120px;
+	}
+	
+	#logo a {
+		margin: 0;
+		padding: 0;
+		position: relative;
+		display: block;
+		height: 120px;
+		font-size: 0;
+	}
+	
+	/* TOP LOGIN */
+	
+	#header #topLogin {
+		margin: 0;
+		padding: 0;
+		position: absolute;
+		right: 5%;
+		display: table;
+		
+	}
+	
+		/* INPUTS */
+		
+		#topLogin input {
+			margin-top: 10px;
+			margin-left: 10px;
+			display: table-cell;
+			border-radius: 5px;
+		}
+		
+		#topLogin Strong {
+			color: #d4d4d4;
+		}
+	
+	/* LINKS */
+	
+	#header #links {
+		margin: 0;
+		padding: 0;
+		position: absolute;
+		width: 60%;
+		height: 50%;
+		right: 0;
+		bottom: 0;
+		
+	}
+	
+		/* MENU */
+
+		#links #menu {
+			margin: 0;
+			padding: 0;
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			display: inline-block;
+			list-style-type: none;
+			text-align: center;
+			
+		}
+		
+			/* LIST ITEMS */
+			
+			#menu li {
+				margin: 0;
+				padding: 0;
+				position: relative;
+				width: 33.3%;
+				height: 100%;
+				display: inline-block;
+				
+			}
+			
+				/* ITEM ANCHOR */
+				
+				#menu li a {
+					margin: 0;
+					padding: 0;
+					position: relative;
+					width: 100%;
+					height: 100%;
+					display: inline-block;
+					line-height: 55px;
+					text-decoration: none;
+					color: #d4d4d4;
+				}
+
+				#menu li a:hover {
+					background-color: #d4d4d4;
+					color: black;
+				}
+		
+/* CONTENT */
+
+#content {
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	min-width: 100%;
+	min-height: 140%;
+	top: 120px;
+	
+	background-image: url("bodyTall.png");
+	background-repeat: repeat-y;
+	background-size: cover;
+}
+
+	/* DATAHOLD */
+	#content #dataHold {
+		margin: 0;
+		margin-left: 5%;
+		margin-top: 2.5%;
+		padding: 0;
+		position: absolute;
+		width: 90%;
+		height: 90%;
+		z-index: 100;
+	}
+	
+		/* DATA MENU */
+		#dataHold #dataMenu {
+			margin: 0;
+			padding: 0;
+			position: relative;
+			top: 10%;
+			min-width: 860px;
+			width: 100%;
+			height: 70px;
+			display: inline-block;
+			list-style-type: none;
+			text-align: right;
+			
+		}
+		
+		#dataMenu li {
+				margin: 0;
+				padding: 0;
+				text-align: center;
+				width: 15%;
+				height: 100%;
+				display: inline-block;
+		}
+		
+		#dataMenu #first {
+				margin: 0;
+				margin-top: 1.5%;
+				margin-left: 1.5%;
+				padding: 0;
+				text-align: center;
+				float: left;
+				width: 20%;
+				height: 100%;
+				display: inline-block;
+		}
+		
+		#first #search {
+			margin: 0;
+			padding: 0;
+			position: relative;
+			width: 70%;
+		}
+		
+		#dataMenu li a {
+			margin: 0;
+			padding: 0;
+			position: relative;
+			width: 100%;
+			height: 100%;
+			display: inline-block;
+			line-height: 75px;
+			text-decoration: none;
+			color: #a4a4a4;
+		}
+
+		#dataMenu li a:hover {
+			background-color: #e4e4e4;
+			color: black;
+		}
+
+		#dataMenu #activeStub {
+			background-color: #e4e4e4;
+			color: black;
+		}
+		
+		/* INNER DATA */
+		#dataHold #innerData {
+			margin: 0;
+			padding: 0;
+			position: relative;
+			width: 100%;
+			min-width: 1060px;
+			height: 90%;
+			min-height: 620px;
+			background-color: #e4e4e4;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+		
+		
+			/* MULTI HOLD */
+			#innerData #multiHold {
+				margin: 0;
+				padding: 0;
+				position: relative;
+				float: left;
+				width: 25%;
+				height: 100%;
+			}
+		
+				/* COMPANY CODE */
+				#multiHold #companyCode {
+					margin: 0;
+					padding: 0;
+					position: relative;
+					float: left;
+					width: 100%;
+					height: 20%;
+				}
+				
+				
+				#companyCode h1 {
+					margin-top: 0;
+					margin-bottom: 0;
+					position: absolute;
+					bottom: 0;
+					text-align: center;
+					width: 100%;
+				}
+			
+				/* DATE SELECT */
+				#innerData #dateSelect {
+					margin: 0;
+					padding: 0;
+					position: relative;
+					float: left;
+					width: 100%;
+					height: 20%;
+				}
+				
+					/* DATES */
+					#dateSelect #dates {
+						margin: 0;
+						margin-top: 5%;
+						padding: 0;
+						position: relative;
+						float: left;
+						width: 50%;
+						height: 100%;
+						text-align: center;
+					}
+					
+					/* DATE SUBMIT */
+					#dateSelect #dateSubmit {
+						margin: 0;
+						padding: 0;
+						position: relative;
+						float: left;
+						width: 50%;
+						height: 100%;
+						text-align: center;
+					}
+					
+					#dateSubmit #submit {
+						margin: 0;
+						padding: 0;
+						position: relative;
+						width: 40%;
+						height: 15%;
+						top: 25%;
+					}
+					
+				/* PRICES */
+				#innerData #prices {
+					margin: 0;
+					padding: 0;
+					position: relative;
+					float: left;
+					width: 100%;
+					height: 60%;
+				}
+					
+					/* TABLE SCROLL */
+					#prices #table-scroll {
+						margin: 0;
+						margin-top: 10%;
+						margin-left: 10%;
+						padding: 0;
+						position: relative;
+						width: 80%;
+						height: 80%;
+						overflow:auto;  
+						text-align: center;
+					}
+					
+						/* TABLE */
+						#table-scroll #priceTable {
+							margin: 0 auto;
+							padding: 0;
+							position: relative;
+							
+							border:1px solid black;
+						}
+						
+						#priceTable thead, th, td {
+							width: 10%;
+						}
+			
+			/* GRAPH HOLD */
+			#innerData #graphHold {
+				margin: 0;
+				margin-top: 20%;
+				padding: 0;
+				position: relative;
+				float: left;
+				width: 50%;
+				height: 95%;
+				min-height: 620px;
+			}
+			
+			#myChart {
+				position: relative;
+
+			}
+			
+			/* ARTICLE HOLD */
+			#innerData #articleHold {
+				margin: 0;
+				padding: 0;
+				position: relative;
+				float: left;
+				width: 25%;
+				height: 100%;
+			}
+			
+				/* NEWS TITLE */
+				#articleHold #newsTitle {
+					margin: 0;
+					padding: 0;
+					position: relative;
+					width: 100%;
+					height: 15%;
+				}
+				
+				#newsTitle h1 {
+					margin-bottom: 0;
+					position: relative;
+					text-align: center;
+					width: 100%;
+					top: 10%;
+				}
+				
+				/* EMBED HOLD */
+				#articleHold #embedHold {
+					margin: 0;
+					padding: 0;
+					position: relative;
+					width: 100%;
+					height: 90%;
+					overflow-y: auto;
+				}
+				
+				#embedHold blockquote {
+					border-bottom: 1px solid black;
+				}
+				
+			
+/* FOOTER */
+
+#footer {
+	margin: 0;
+	padding: 0;
+	position: fixed;
+	min-width: 100%;
+	height: 40px;
+	bottom: 0;
+	z-index: 101;
+	
+	background-color: #f4f4f4;
+}
+	/* BOT MENU */
+	
+	#footer #botmenu {
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
+	}
+	
+		/* LIST ITEMS */
+		
+		#botMenu li {
+			margin: 0;
+			padding: 0;
+			display: inline-block;
+		}
+		
+			/* ITEM ANCHOR */
+			
+			#botMenu li a {
+				text-decoration: none;
+			}
