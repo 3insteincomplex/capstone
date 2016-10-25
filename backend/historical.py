@@ -6,10 +6,11 @@ Created on Thu Oct 20 11:35:50 2016
 """
 import datetime
 from pymongo import MongoClient
+import pymongo
 
 client = MongoClient('mongodb://admin1:admin1@ds019766.mlab.com:19766/heroku_51vsxq80')
 db = client.get_default_database()
-histo = db['test']
+histo = db['hist_rec']
     
 def query(company, y_s, m_s, d_s, y_e, m_e, d_e):
     comp_hist = []
@@ -23,9 +24,11 @@ def query(company, y_s, m_s, d_s, y_e, m_e, d_e):
     date_s = datetime.datetime(syyyy, smm, sdd, 0, 0)
     date_e = datetime.datetime(eyyyy, emm, edd, 0, 0)
    
-    for item in histo.find({"date": {'$gte': date_s, '$lte': date_e}, "asx_code": ccode}):
+    for item in histo.find({"date": {'$gte': date_s, '$lte': date_e}, "asx_code": ccode}).sort([
+        ("date", pymongo.ASCENDING)
+        ]):
         datet = str(item.get('date'))
-        dsplit = datet.split('-')
+        dsplit = datet.split(' ')
         date = dsplit[0]
         close = item.get('price').get('close')
         opening = item.get('price').get('open')
@@ -37,21 +40,7 @@ def query(company, y_s, m_s, d_s, y_e, m_e, d_e):
             "close": float(close),
             "open":float(opening),
             "low": float(low),
-            "high": float(high),
+            "high": float(high)
         }
         comp_hist.append(parsep)
     return comp_hist
-    
-def graph(data):
-    close = []
-    date = []
-    for item in data:
-        closep = item['close']
-        mm = item['month']
-        yy = item['year']
-        m = str(mm)
-        y = str(yy)
-        my = m + "/" +y
-        close.append(closep)
-        date.append(my)
-    return close, date

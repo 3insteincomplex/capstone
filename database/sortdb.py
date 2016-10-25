@@ -14,3 +14,9 @@ for doc in histo.find().sort([
         ("date", pymongo.DESCENDING)
         ]):
     print(doc)
+    
+def delete_entry(cco, dated):
+    for doc in histo.find_one({"date": dated, "asx_code": cco}):
+        result = histo.remove(doc)
+    print(result.deleted_count)
+    return "done"

@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title>Handle POST requests with Flask</title>
+    </head>
+    <body>
+        <div id="content">
+            <form method="post" action="{{ url_for('output') }}">
+                <label for="fromdate">From Date</label>
+                <input type="date" name="fromdate" /><br />
+                <label for="todate">To Date:</label>
+                <input type="date" name="todate" /><br />
+                <label for="todate">Keyword:</label>
+                <input type="text" name="keyword" /><br />
+                <input type="submit" />
+            </form>
+        </div>
+    </body>
+</html>

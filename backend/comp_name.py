@@ -8,5 +8,11 @@ def search(company):
     test = str(company)
     tst = ('.*'+test+'.*').upper()
     histor = comcode.find_one({"$or":[ {"ASX code": company}, {"Company name":{'$in': [ re.compile(tst)]}}]})
-    compname = histor.get('ASX code')
-    return compname
+    comp_inf =  []
+    comp_inf.extend([])
+    compasx = histor.get('ASX code')
+    compname = histor.get('Company name')
+    compgics = histor.get('GICS Industry group')
+    comp_inf.extend([compasx, compname, compgics])
+    return comp_inf
+    

@@ -11,45 +11,39 @@ start = past.strftime("%Y-%m-%d")
 end = now.strftime("%Y-%m-%d")
 
 
-delete_d = date_delete.strftime("%Y-%m-%d")
+delete_d = date_delete.strftime("%Y%m-%d")
+del_d  =str(delete_d+"T00:00:00.000Z")
 client = MongoClient('mongodb://admin1:admin1@ds019766.mlab.com:19766/heroku_51vsxq80')
 db = client.get_default_database()
 histo = db['hist_rec']
 null = 0
 
-def delete_entry(cco, dated):
-    for doc in histo.find_one({"date": dated, "asx_code": cco}):
-        result = histo.delete(doc)
-    print(result.deleted_count)
-    return "done"
-
 for item in asx:
     code = str(item +".AX")
-    hist = ysq.get_historical_prices(code, start, end)
-    delete_entry(code, delete_d)
+    hist = ysq.get_historical_prices(code, end, end)
 
     for i in hist:
-        date = datetime.datetime.strptime(i, "%Y-%m-%d")
-        price = hist.get(i, {})
-        adj_close =  price.get('Adj Close', {})
-        close =  price.get('Close', {})
-        opening =  price.get('Open', {})
-        low =  price.get('Low', {})
-        high =  price.get('High', {})
-        vol =  price.get('Vol', {})        
+        if i != None:
+            date = datetime.datetime.strptime(i, "%Y-%m-%d")
+            price = hist.get(i, {})
+            adj_close =  price.get('Adj Close', {})
+            close =  price.get('Close', {})
+            opening =  price.get('Open', {})
+            low =  price.get('Low', {})
+            high =  price.get('High', {})
+            vol =  price.get('Vol', {})        
         
-        prices = {
-            "high":  float(high),
-            "open":  float(opening),
-            "low":   float(low),
-            "adj_close":   float(adj_close),
-            "close":   float(close)
-        }
-        filtered_page = {
-            "asx_code": code,
-            "date": date,
-            "price": prices
-        }
-        
-        histo.insert_one(filtered_page)
+            prices = {
+                "high":  float(high),
+                "open":  float(opening),
+                "low":   float(low),
+                "adj_close":   float(adj_close),
+                "close":   float(close)
+            }
+            filtered_page = {
+                "asx_code": code,
+                "date": date,
+                "price": prices
+            }
+            histo.insert_one(filtered_page)
         print(filtered_page)
