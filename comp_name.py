@@ -19,7 +19,6 @@ def search(company):
     return comp_inf
     
 def sector_comp(company):
-    test = str(company)
-    tst = ('.*'+test+'.*').upper()
-    histor = comcode.find({"ASX code": company})
+    seccomp = comcode.find({"ASX code": company})
+    sector = seccomp.get("Sector")
 
