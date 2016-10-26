@@ -29,12 +29,14 @@ def lookup():
 @app.route('/<string:company>+from<string:start>to<string:end>')
 def get_price(company,start,end):
     asx = search(company)
-    cn = str(asx[1] + " ")
-    ind = str(asx[2])
     cc = str(asx[0])
+    cn = str(asx[1] + " ")
+    sec = str(asx[2])
+    markc = str(asx[3])
+    weight = float(asx[4])
     late = latest_prices(cc)
     qu = query(cc, start, end)
-    return render_template('news.html', cc=cc, cn=cn, ind=ind, late=late, qu=qu, start=start, end = end)
+    return render_template('news.html', cc=cc, cn=cn, sec=sec, markc=markc, weight=weight, late=late, qu=qu, start=start, end = end)
 
 if __name__ == "__main__":
     app.run(debug = True)

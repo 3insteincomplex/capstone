@@ -12,7 +12,9 @@ def search(company):
     comp_inf.extend([])
     compasx = histor.get('ASX code')
     compname = histor.get('Company name')
-    compgics = histor.get('GICS Industry group')
-    comp_inf.extend([compasx, compname, compgics])
+    compsec = histor.get('Sector')
+    compmark = histor.get('Market Cap')
+    compweight = histor.get('Weight')
+    comp_inf.extend([compasx, compname, compsec, compmark, compweight])
     return comp_inf
     

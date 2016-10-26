@@ -7,7 +7,7 @@ Created on Thu Oct 20 11:35:50 2016
 import datetime
 import pymongo
 
-client = pymongo.MongoClient('mongodb://admin1:admin1@ds019766.mlab.com:19766/heroku_51vsxq80')
+client = pymongo.MongoClient('mongodb://admin1:admin1@ds059306.mlab.com:59306/heroku_ph242ktw')
 db = client.get_default_database()
 histo = db['hist_rec']
     
