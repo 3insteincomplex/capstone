@@ -3,3 +3,4 @@ gunicorn==19.1.0
 PasteDeploy==1.5.2
 pymongo==3.3.0
 ystockquote==0.2.4
+eventregistry==6.0.10

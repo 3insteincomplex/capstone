@@ -21,5 +21,5 @@ def search(company):
 def sector_comp(company):
     test = str(company)
     tst = ('.*'+test+'.*').upper()
-    histor = comcode.find_one({"$or":[ {"ASX code": company}, {"Company name":{'$in': [ re.compile(tst)]}}]})
+    histor = comcode.find({"ASX code": company})
 
