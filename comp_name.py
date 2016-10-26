@@ -1,6 +1,6 @@
 from pymongo import MongoClient
 import re
-client = MongoClient('mongodb://admin1:admin1@ds019766.mlab.com:19766/heroku_51vsxq80')
+client = MongoClient('mongodb://admin1:admin1@ds059306.mlab.com:59306/heroku_ph242ktw')
 db = client.get_default_database()
 comcode = db['asxcode']
 
