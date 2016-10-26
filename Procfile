@@ -1,2 +1,2 @@
 # Procfile
-web: gunicorn app:app
+web: gunicorn --pythonpath Web app:app
