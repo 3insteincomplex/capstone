@@ -39,4 +39,4 @@ def get_price(company,start,end):
     return render_template('news.html', cc=cc, cn=cn, sec=sec, markc=markc, weight=weight, late=late, qu=qu, start=start, end = end)
 
 if __name__ == "__main__":
-    app.run(debug = True)
+    app.run()
