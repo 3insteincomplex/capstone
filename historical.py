@@ -5,16 +5,23 @@ Created on Thu Oct 20 11:35:50 2016
 @author: meemee
 """
 import datetime
-from pymongo import MongoClient
 import pymongo
 
-client = MongoClient('mongodb://admin1:admin1@ds019766.mlab.com:19766/heroku_51vsxq80')
+client = pymongo.MongoClient('mongodb://admin1:admin1@ds019766.mlab.com:19766/heroku_51vsxq80')
 db = client.get_default_database()
 histo = db['hist_rec']
     
-def query(company, y_s, m_s, d_s, y_e, m_e, d_e):
+def query(company, start, end):
     comp_hist = []
     ccode = str(company + ".AX")
+    date_s = start.split('-')
+    y_s = date_s[0]
+    m_s = date_s[1]
+    d_s = date_s[2]
+    date_e = end.split('-')
+    y_e = date_e[0]
+    m_e = date_e[1]
+    d_e = date_e[2]
     syyyy = int(y_s)
     smm = int(m_s)
     sdd = int(d_s)
@@ -44,3 +51,4 @@ def query(company, y_s, m_s, d_s, y_e, m_e, d_e):
         }
         comp_hist.append(parsep)
     return comp_hist
+    
