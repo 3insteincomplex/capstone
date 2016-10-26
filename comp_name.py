@@ -18,3 +18,8 @@ def search(company):
     comp_inf.extend([compasx, compname, compsec, compmark, compweight])
     return comp_inf
     
+def sector_comp(company):
+    test = str(company)
+    tst = ('.*'+test+'.*').upper()
+    histor = comcode.find_one({"$or":[ {"ASX code": company}, {"Company name":{'$in': [ re.compile(tst)]}}]})
+
