@@ -8,7 +8,7 @@ Created on Thu Oct 20 11:35:26 2016
 import ystockquote as ysq
 
 def latest_prices(company):
-    ccode = str(company + ".AX")
+    ccode = str(company)
     compdata = ysq.get_all(ccode)
     price = compdata.get('price')
     change = compdata.get('change')
