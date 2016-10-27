@@ -12,18 +12,18 @@ from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
 
-   
+
 @app.route('/', methods = ['POST', 'GET'])
 def lookup():
     query = {}
     if request.method == 'POST':
-        fromdate=request.form['fromdate']
-        todate=request.form['todate']
+        fromdate=request.form['from-date']
+        todate=request.form['to-date']
         keyword=request.form['keyword']
         query = {'fromdate': fromdate, 'todate': todate, 'keyword': keyword}
         start = query.get('fromdate')
         end = query.get('todate')
-        company = query.get('keyword')     
+        company = query.get('keyword')
         return redirect(url_for('get_price', start=start, end = end, company=company))
     return render_template('home.html')
 
