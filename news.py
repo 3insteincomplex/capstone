@@ -39,7 +39,7 @@ def get_articles(company_code):
     q.addKeyword(key)
 
     q.addNewsSource(er.getNewsSourceUri("www.smh.com.au"))
-    q.addRequestedResult(RequestArticlesInfo(count = 10,
+    q.addRequestedResult(RequestArticlesInfo(count = 5,
                                              returnInfo = ReturnInfo(articleInfo = ArticleInfoFlags(duplicateList = False, title = True))))
 
     data = er.execQuery(q)
