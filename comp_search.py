@@ -25,7 +25,8 @@ def compare(sec):
         ])[:3]:
         code = item.get('ASX code')
         marketc = item.get('Market Cap')
-        competitors.extend([code, marketc])
+        name = item.get('Company name')
+        competitors.extend([code, marketc, name])
     return competitors
 
 

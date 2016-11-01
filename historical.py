@@ -61,9 +61,9 @@ def query_compare(company, competitors):
     c1_close = query(company, start, end)
     c2 = str(competitors[0])
     c2_close = query(c2, start, end)
-    c3 = str(competitors[2])
+    c3 = str(competitors[3])
     c3_close = query(c3, start, end)
-    c4= str(competitors[4])
+    c4= str(competitors[6])
     c4_close = query(c4, start, end)
 
     ca = []
