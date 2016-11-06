@@ -4,7 +4,7 @@ client = pymongo.MongoClient('mongodb://admin1:admin1@ds059306.mlab.com:59306/he
 db = client.get_default_database()
 comcode = db['asxcode']
 
-def search(company):
+def get_company(company):
     test = str(company)
     tst = ('.*'+test+'.*')
     comp_inf =  []
@@ -26,7 +26,9 @@ def compare(sec):
         code = item.get('ASX code')
         marketc = item.get('Market Cap')
         name = item.get('Company name')
-        competitors.extend([code, marketc, name])
+        competitors.extend([code, name, marketc])
     return competitors
+    
+
 
 

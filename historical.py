@@ -12,51 +12,76 @@ end = now.strftime("%Y-%m-%d")
 
 import pymongo
 
+
 client = pymongo.MongoClient('mongodb://admin1:admin1@ds059306.mlab.com:59306/heroku_ph242ktw')
 db = client.get_default_database()
 histo = db['hist_rec']
+new = db['news_rec']
+
+def splitdate(date):
+    date_ = date.split('-')
+    y_ = date_[0]
+    m_ = date_[1]
+    d_ = date_[2]
+    yyyy = int(y_)
+    mm = int(m_)
+    dd = int(d_)
+    date_final = datetime.datetime(yyyy, mm, dd, 0, 0)
+    return date_final
+    
     
 def query(company, start, end):
     comp_hist = []
     ccode = str(company)
-    date_s = start.split('-')
-    y_s = date_s[0]
-    m_s = date_s[1]
-    d_s = date_s[2]
-    date_e = end.split('-')
-    y_e = date_e[0]
-    m_e = date_e[1]
-    d_e = date_e[2]
-    syyyy = int(y_s)
-    smm = int(m_s)
-    sdd = int(d_s)
-    eyyyy = int(y_e)
-    emm = int(m_e)
-    edd = int(d_e)
-    date_s = datetime.datetime(syyyy, smm, sdd, 0, 0)
-    date_e = datetime.datetime(eyyyy, emm, edd, 0, 0)
-   
+    date_s = splitdate(start)
+    date_e = splitdate(end)
+    
     for item in histo.find({"date": {'$gte': date_s, '$lte': date_e}, "asx_code": ccode}).sort([
         ("date", pymongo.ASCENDING)
         ]):
-        datet = str(item.get('date'))
-        dsplit = datet.split(' ')
-        date = dsplit[0]
         close = item.get('price').get('close')
         opening = item.get('price').get('open')
         low = item.get('price').get('low')
         high = item.get('price').get('high')
-
+        datet = str(item.get('date'))
+        dsplit = datet.split(' ')
+        date = dsplit[0]
+     
         parsep = {
             "date": date,
             "close": float(close),
             "open":float(opening),
             "low": float(low),
             "high": float(high)
-        }
+            }
         comp_hist.append(parsep)
     return comp_hist
+    
+def news_search(company, data):
+    news_data = []
+    ccode = str(company)
+    for item in data:
+        date_d = item.get("date")
+        date_n = splitdate(date_d)
+        news = []
+        for listing in new.find({"Date": date_n, "ASX code": ccode}).sort([
+                             ("date", pymongo.ASCENDING)
+                             ]):
+                                article = {"url": listing.get("URL"), "title": listing.get("Title"), "body": listing.get("Body")}
+                                news.append(article)
 
+        news_ = {
+              "articles": news,
+              "article_status": len(news),
+              "close" : item.get('close'),
+              "open" : item.get('open'),
+              "high" : item.get('high'),
+              "low" : item.get('low'),
+              "date" : date_d
+              }
+        news_data.append(news_)
+    return news_data
+    
 def query_compare(company, competitors):
     c1_close = query(company, start, end)
     c2 = str(competitors[0])
@@ -102,6 +127,15 @@ def query_compare(company, competitors):
         print(parsep)
         
     return comparison
+    
+        
+        
+            
+    
+    
+
+            
+    
         
     
     

@@ -16,7 +16,7 @@
 
     <!-- Theme CSS -->
     <link href="static/css/freelancer.min.css" rel="stylesheet">
-    
+      
     <!-- tables CSS -->
     <link href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" rel="stylesheet">
     
@@ -43,67 +43,79 @@
     "synchronizeGrid":true,
     "valueAxes": [{
         "id":"v1",
-        "axisColor": "#FF6600",
+        "axisColor": "#f44250",
         "axisThickness": 2,
         "axisAlpha": 1,
+        "color" : "#FFFFFF",
         "position": "left"
     }, {
         "id":"v2",
-        "axisColor": "#FCD202",
+        "axisColor": "#f4b942",
         "axisThickness": 2,
         "axisAlpha": 1,
+        "color" : "#FFFFFF",
         "position": "right"
     }, {
         "id":"v3",
-        "axisColor": "#B0DE09",
+        "axisColor": "#42f483",
         "axisThickness": 2,
         "gridAlpha": 0,
         "offset": 50,
         "axisAlpha": 1,
+        "color" : "#FFFFFF",
         "position": "left"
     }, {
         "id":"v4",
-        "axisColor": "#0000E5",
+        "axisColor": "#42b3f4",
         "axisThickness": 2,
         "gridAlpha": 0,
         "offset": 50,
         "axisAlpha": 1,
+        "color" : "#FFFFFF",
         "position": "right"
     }],
     "graphs": [{
         "valueAxis": "v1",
-        "lineColor": "#FF6600",
+        "lineColor": "#f44250",
+        "lineThickness" : 3,
         "bullet": "round",
-        "bulletBorderThickness": 1,
+        "bulletBorderThickness": 15,
         "hideBulletsCount": 30,
         "title": "ASX1",
+        "color" : "#FFFFFF",
         "valueField": "a",
 		"fillAlphas": 0
     }, {
         "valueAxis": "v2",
-        "lineColor": "#FCD202",
+        "lineColor": "#f4b942",
+        "lineThickness" : 3,
         "bullet": "square",
         "bulletBorderThickness": 1,
         "hideBulletsCount": 30,
         "title": "ASX2",
+        "color" : "#FFFFFF",
         "valueField": "b",
 		"fillAlphas": 0
     }, {
         "valueAxis": "v3",
-        "lineColor": "#B0DE09",
+        "lineColor": "#42f483",
+        "lineThickness" : 3,
         "bullet": "triangleUp",
         "bulletBorderThickness": 1,
         "hideBulletsCount": 30,
         "title": "ASX3",
+        "color" : "#FFFFFF",
         "valueField": "c",
 		"fillAlphas": 0
     }, {
         "valueAxis": "v4",
-        "lineColor": "#0000E5",
+        "lineColor": "#42b3f4",
+        "lineThickness" : 3,
         "bullet": "triangleUp",
         "bulletBorderThickness": 1,
         "hideBulletsCount": 30,
         "title": "ASX4",
+        "color" : "#FFFFFF",
         "valueField": "d",
 		"fillAlphas": 0
         }],
@@ -115,6 +127,7 @@
     "categoryAxis": {
         "parseDates": true,
         "axisColor": "#DADADA",
+        "color" : "#FFFFFF",
         "minorGridEnabled": true
     },
     "export": {
@@ -142,28 +155,29 @@ function zoomChart(){
     <!-- amChart.js candlestick chart-->
     <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>	
     <script type="text/javascript">
-    var cData = {{ qu| safe }};
+    var cData = {{ new_query| safe }};
 
     var chart = AmCharts.makeChart( "chartdiv2", {
       "type": "serial",
       "theme": "light",
       "dataDateFormat":"YYYY-MM-DD",
       "valueAxes": [ {
-        "position": "left"
+        "position": "left",
+        "color" : "#FFFFFF"
       } ],
       "graphs": [ {
         "id": "g1",
         "proCandlesticks": true,
         "balloonText": "Open:<b>[[open]]</b><br>Low:<b>[[low]]</b><br>High:<b>[[high]]</b><br>Close:<b>[[close]]</b><br>",
         "closeField": "close",
-        "fillColors": "#7f8da9",
+        "fillColors": "#42f483",
         "highField": "high",
-        "lineColor": "#7f8da9",
+        "lineColor": "#42f483",
         "lineAlpha": 1,
         "lowField": "low",
         "fillAlphas": 0.9,
-        "negativeFillColors": "#db4c3c",
-        "negativeLineColor": "#db4c3c",
+        "negativeFillColors": "#f44250",
+        "negativeLineColor": "#f44250",
         "openField": "open",
         "title": "Price:",
         "type": "candlestick",
@@ -172,7 +186,7 @@ function zoomChart(){
       "chartScrollbar": {
         "graph": "g1",
         "graphType": "line",
-        "scrollbarHeight": 30
+        "scrollbarHeight": 10
       },
       "chartCursor": {
         "valueLineEnabled": true,
@@ -180,7 +194,8 @@ function zoomChart(){
       },
       "categoryField": "date",
       "categoryAxis": {
-        "parseDates": true
+        "parseDates": true,
+        "color" : "#FFFFFF"
       },
       "dataProvider": cData,
       "export": {
@@ -238,18 +253,18 @@ function zoomChart(){
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-right" style="height:60px">
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#latest">Latest</a>
+                        <a href="#overview" style="font-size:20px">Overview</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#historical">Historical</a>
+                        <a href="#historical" style="font-size:20px">Historical</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#summary">News</a>
+                        <a href="#comparison" style="font-size:20px">Sector Comparison</a>
                     </li>
                 </ul>
             </div>
@@ -336,39 +351,88 @@ function zoomChart(){
     </header>
 
     <!-- Latest Section -->
-    <section id="latest">
+    <section id="overview">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2>- Latest -</h2>
+                    <h1 align="left"; style="color:#2C3E50">Performance Overview</h1>
+                    </br>
+                    </br>
                 </div>
             </div>
-            <div class="row">  
+            <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <center><p><i>This section contains the most up-to-date information on your search.</i></p></center><br />
                     <br />
+                    
                 </div>              
                <!-- company profile start -->
                <div class="name col-md-12">
-                    <h4>{{ cn }}<span class="label label-default"> ASX200:{{ cc }}</span></h4>
+                    <h3>{{ asx[1] }} <span class="label label-default"> ASX200: {{ asx[0] }}</span></h3>
                 </div>
-                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                     <h1>   </h1>
                     <h1>   </h1>
-                    <p><b>Company Profile</b></p>
+                    <p><b>Today's Quotes</b></p>
                     <div class="panel panel-default">
-                            <table class="table">
+                            <table class="table" style="font-size:15px;">
                                 <tr>
-                                    <th>Price</th>
-                                    <td>AUD${{ late["Price"] }} </td>
+                                    <th style="color:#2C3E50">Price</th>
+                                    <td>AU${{ late["Price"] }} </td>
                                 </tr>
                                 <tr>
-                                    <th>Change from Previous Price</th>
+                                    <th style="color:#2C3E50">Change from Previous Price</th>
                                     <td>{{ late["Change from Previous Price"] }} </td>
                                 </tr>
                                 <tr>
+                                    <th style="color:#2C3E50">Yearly High</th>
+                                    <td>AU${{ late["Yearly High"] }} </td>
+                                </tr>
+                                <tr>
+                                    <th style="color:#2C3E50">Yearly Low</th>
+                                    <td>AU${{ late["Yearly Low"] }} </td>
+                                </tr>
+                                <tr>
+                                    <th style="color:#2C3E50">Fifty-Day Moving Average</th>
+                                    <td>{{ late["Fifty-Day Moving Average"] }} </td>
+                                </tr>
+                                <tr>
+                                    <th style="color:#2C3E50">Two Hundred-Day Moving Average</th>
+                                    <td> {{ late["Two Hundred-Day Moving Average"] }} </td>
+                                </tr>
+                                <tr>
+                                    <th style="color:#2C3E50">Volume</th>
+                                    <td>{{ late["Volume"] }}</td>
+                                </tr>
+                                <tr>
+                                    <th style="color:#2C3E50">Volume (Avg)</th>
+                                    <td>{{ late["Volume (Avg)"] }}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                <!-- company profile end -->
+                <!-- profile radial graph start -->
+                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
+                    <h1>   </h1>
+                    <h1>   </h1>
+                    <p><b>Market Sentiment: {% if market[1] == "Bullish"%}<span class="label label-success"> {% else %} <span class="label label-danger">{% endif %}{{ market[1] }}</span></b></p>
+                    <div class="well" style="color:#000000; font-size:16px;">
+                        <p style="font-size:16px">Over the duration of <font color="#42b3f4">{{ market[0] }} days</font>, the stock for 
+                        {{ asx[1] }}({{ asx[0] }}){% if market[1] == "Bullish"%}<font color="#42f483"> {% else %} <font color="#f44250">{% endif %} 
+                                                                                                {{ market[2] }} by {{ market[3] }} ({{ market[4] }}%).</font></p>
+                        <p style="font-size:16px">Stock has a {% if market[1] == "Bullish"%}<font color="#42f483">{% else %}<font color="#f44250">{% endif %}volatility of {{ market[5] }}%</font> compared to the ASX200 average of 18.5%. <p>
+                        <p style="font-size:16px">The average closing price for this period was <font color="#42b3f4">AU${{ market[6] }}</font>.<p>
+                        <p style="font-size:16px">The highest value for by the daily high was <font color="#42f483">AU${{ market[7] }}</font> on {{ market[11] }}, and the lowest value for the daily low was <font color="#f44250">AU${{ market[8] }}</font>, on {{ market[12] }}.</p>
+                        <p style="font-size:16px">The highest value for closing prices was <font color="#42f483">$AU{{ market[9] }}</font> on {{ market[13] }}, and the lowest value for closing price was <font color="#f44250">AU${{ market[10] }}</font> on {{ market[14] }}.</p>
+                        <p style="font-size:16px">Stock increased <font color="#42f483">{{ market[15] }}</font>{% if market[15] == 1%} time {% else %} times {% endif %}and decreased <font color="#f44250">{{ market[16] }}</font>{% if market[16] == 1%} time {% else %} times{% endif %} during this period.</p>
+                     </div>
+                </div>
+                </div>
+                <!-- radial graph end -->
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <tr>
                                     <th>Market Cap</th>
-                                    <td>AUD${{ late["Market Cap"] }} </td>
+                                    <td>AU${{ late["Market Cap"] }} </td>
                                 </tr>
                                 <tr>
                                     <th>Earnings Per Share</th>
@@ -385,126 +449,37 @@ function zoomChart(){
                                 <tr>
                                     <th>Price-Sales Ratio</th>
                                     <td>{{ late["Price-Sales Ratio"] }} </td>
-                                </tr>
-                                <tr>
-                                    <th>Yearly High</th>
-                                    <td>AUD${{ late["Yearly High"] }} </td>
-                                </tr>
-                                <tr>
-                                    <th>Yearly Low</th>
-                                    <td>AUD${{ late["Yearly Low"] }} </td>
-                                </tr>
-                                <tr>
-                                    <th>Fifty-Day Moving Average</th>
-                                    <td>{{ late["Fifty-Day Moving Average"] }} </td>
-                                </tr>
-                                <tr>
-                                    <th>Two Hundred-Day Moving Average</th>
-                                    <td> {{ late["Two Hundred-Day Moving Average"] }} </td>
-                                </tr>
-                                <tr>
-                                    <th>Volume</th>
-                                    <td>{{ late["Volume"] }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Volume (Avg)</th>
-                                    <td>{{ late["Volume (Avg)"] }}</td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                <!-- company profile end -->
-                <!-- profile radial graph start -->
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-lg-offset-1 col-md-offset-1 col-s-offset-1">
-                    <h1>   </h1>
-                    <h1>   </h1>
-                    <p><b>Company Performance</b></p>
-                    <p>Coming Soon</p>
-                    <h1>   </h1>
-                    <h1>   </h1>
-                    <p><b>Period Overview</b></p>
-                    <div class="well" style="color:#000000; font-size:12px;">
-                        <h4>Market Sentiment: <span class="label label-success">Bullish</span></h4>
-                        <h4> </h4>
-                        <p style = "font-size:16px">For the duration of {{ numdays }} days, stock for company, {{ cn }} <span class="label label-primary">ASX200: {{ cc }}</span> has <span class="label label-success">increased by 5.54%.</span></p>
-                        <p style = "font-size:16px">For the given time, it showed relatively <span class="label label-success">low volatility of 8.5%</span>, when compared to the ASX200 average of 18.5%, which is <span class="label label-success">10.0% lower than average</span>. <p>
-                        <p style = "font-size:16px">High was achieved on 2/10/2014 and was <span class="label label-success">$AU132.50</span>, lowest price was <span class="label label-danger">$AU146.50</span> on the 1/9/2014. Overall, stock has increased in price 24 times and decreased in price 6 times.<p>
-                     </div>
-                </div>
-                </div>
-                <!-- radial graph end -->
-                <div class="col-lg-12 col-md-12 col-s-12 col-xs-12">
-                    <p> </p>
-                    <p> </p>
-                    <p><b>Sector Comparison : {{ sec }}</b></p>
-                </div>
-                <!-- sector comparison start -->
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div id="chartdiv" style="height:500px; width:100%;"></div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading"><center><b>Legend</b></center></div>
-                            <table class="table">                     
-                            <thead>
-                                    <td style="font-size:12px"><strong>Graph Label</strong></td>
-                                    <td style="font-size:12px; color: #FF6600"><strong>ASX1</strong></td>
-                                    <td style="font-size:12px; color: #FCD202"><strong>ASX2</strong></td>
-                                    <td style="font-size:12px; color: #B0DE09"><strong>ASX3</strong></td>
-                                    <td style="font-size:12px; color: #0000E5"><strong>ASX4</strong></td>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td style="font-size:12px"><strong>Company Name</strong></td>
-                                    <td style="font-size:12px">{{ cn }}</td>
-                                    <td style="font-size:12px">{{ c1 }}</td>
-                                    <td style="font-size:12px">{{ c2 }}</td>
-                                    <td style="font-size:12px">{{ c3 }}</td>
-                                </tr>
-                                <tr>
-                                    <td style="font-size:12px"><strong>Market Cap</strong></td>
-                                    <td style="font-size:12px">{{ markc }}</td>
-                                    <td style="font-size:12px">{{ cm1 }}</td>
-                                    <td style="font-size:12px">{{ cm2 }}</td>
-                                    <td style="font-size:12px">{{ cm3 }}</td>                                
-                                </tr>
-                            </tbody> 
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <!-- sector comparison end -->
+                                </tr>          
             </div>
         </div>
     </section>
 
     <!-- Historical Section -->
-    <section class="success" id="historical">
+    <section id="historical">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2>- Historical -</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <center><p><i>This section contains historical prices and news articles about your search.</i></p></center><br />
-                    <br />
+                    <h1 align="left"; style="color:#2C3E50">Historical Data</h1>
+                    </br>
+                    </br>
                 </div>
             </div>
             <div class="row">
                 <div class="name col-md-12">
-                    <h4>{{ cn }}<span class="label label-default"> ASX200:{{ cc }}</span></h4>
-                </div>                
+                    <h3>{{ asx[1] }} <span class="label label-default"> ASX200: {{ asx[0] }}</span></h3>
+                </div>
+            </div>
+            <div class="row">              
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">  
                     <h1>   </h1>
                     <h1>   </h1>
-                    <p><b>Historical Prices</b></p>
-                    <div id="chartdiv2" style = "width:100%; height:500px; font-size:11px; background-color: #FFFFFF;"></div>
+                    <p><b>Historical Closing Prices</b></p>
+                    <div id="chartdiv2" style="width:100%; height:500px; font-size:11px; color:#FFFFFF; background-color: #2C3E50;"></div>
                 </div>
                 <!-- historical price table start -->
-                <div class="col-md-7 col-xs-12">                                
-                    <h1>   </h1>
-                    <h1>   </h1>
-                    <p><b>Price and Article Lookup</b></p>
+                <div class="col-lg-6 col-md-6 col-xs-6 col-xs-12">                                
+                    </br>
+                    <p><b>Price & Article Lookup</b></p>
                         <div class="panel panel-default">
                             <table id="example" class="display" cellspacing="0" width="100%">                     
                                 <thead> 
@@ -518,15 +493,19 @@ function zoomChart(){
                                     </tr>
                                 </thead> 
                                 <tbody>
-                                {% for item in qu %}
+                                {% for item in news %}
                                     <tr>
                                         <td style="color:#000000"> {{ item["date"] }} </td>
                                         <td style="color:#000000"> {{ item["close"] }} </td>
                                         <td style="color:#000000"> {{ item["open"] }} </td>
                                         <td style="color:#000000"> {{ item["high"] }} </td>
                                         <td style="color:#000000"> {{ item["low"] }} </td>
-                                        <td> <a href="#portfolioModal1" style="color:#000000" class="portfolio-link" data-toggle="modal">[Show]</a> </td>                                                                  
-                                    </tr>
+                                        {% if item["article_status"] != 0 %}
+                                            <td> <a href="#portfolioModal{{ item["date"]  }}" class="portfolio-link" data-toggle="modal">Show {{ item["article_status"]}}</a> </td>  
+                                        {% else %}
+                                            <td style="color:#000000">No articles</td>
+                                        {% endif %}
+                                    </tr>                                   
                                 {% endfor %}
                                 </tbody> 
                             </table>
@@ -537,19 +516,75 @@ function zoomChart(){
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="summary">
+    <!-- Comparison Section -->
+    <section id="comparison">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2>- Sector Comparison -</h2>
+                    <h1 align="left"; style="color:#2C3E50">Sector Comparison</h1>
+                    </br>
+                    </br>
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <center><p><i>This section compares the prices and profile of your search to its competitors in the same sector.</i></p></center><br />
-                    <br />
+                <div class="name col-md-12">                    
+                    <h3>{{ asx[1] }} <span class="label label-default"> ASX200: {{ asx[0] }}</span></h3>
+                    </br>
                 </div>
+                <!-- sector comparison start -->
+                <div class="col-lg-9 col-md-8 col-sm-6 col-xs-12">
+                    <h1> </h1>
+                    <h1> </h1>
+                    <div id="chartdiv" style="height:500px; width:100%; font-size:11px; color:#FFFFFF; background-color: #2C3E50;"></div>
+                </div>
+                
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <h1> </h1>
+                    <h1> </h1>
+                    <p><b>Sector: {{ asx[2] }}</b></p>
+                    <p style = "font-size:16px">Comparison between the selected company and three of its best competitors in the same sector.</p>
+                    </br>
+                    </br>
+                    <p><b>Legend</b></p>
+                    <div class="panel panel-default">
+                            <table class="table" >                     
+                            <thead>
+                                    <td style="font-size:12px"><strong>Graph Label</strong></td>
+                                    <td style="font-size:12px"><strong>Company Name</strong></td>
+                                    <td style="font-size:12px"><strong>Market Cap</strong></td>
+
+                            </thead>    
+                            <tbody>
+                                <tr>
+                                    <td style="font-size:12px; color: #FF6600"><strong>ASX1</strong></td>
+                                    <td style="font-size:12px">{{ asx[1] }}</td>
+                                    <td style="font-size:12px">${{ asx[3] }}</td>
+                                </tr>
+                                <tr>
+                                    <td style="font-size:12px; color: #FCD202"><strong>ASX2</strong></td>
+                                    <td style="font-size:12px">{{ competitors[1] }}</td>
+                                    <td style="font-size:12px">${{ competitors[2] }}</td>
+                                    
+
+                                </tr>
+                                <tr>
+                                    <td style="font-size:12px; color: #B0DE09"><strong>ASX3</strong></td>
+                                    <td style="font-size:12px">{{ competitors[4] }}</td>
+                                    <td style="font-size:12px">${{ competitors[5] }}</td>
+                               
+                                </tr>
+                                    <td style="font-size:12px; color: #0000E5"><strong>ASX4</strong></td>
+                                    <td style="font-size:12px">{{ competitors[7] }}</td>
+                                    <td style="font-size:12px">${{ competitors[8] }}</td>                                
+                                <tr>
+                                    
+                                </tr>
+                            </tbody> 
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- sector comparison end -->
             </div>
         </div>
     </section>
@@ -594,7 +629,8 @@ function zoomChart(){
     </div>
 
     <!-- Portfolio Modals -->
-    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+    {% for item in news %}
+    <div class="portfolio-modal modal fade" id="portfolioModal{{ item["date"] }}" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-content">
             <div class="close-modal" data-dismiss="modal">
                 <div class="lr">
@@ -613,21 +649,21 @@ function zoomChart(){
                                 <table class="table">                     
                                     <thead> 
                                     <tr>
-                                        <th>Link</th>
-                                        <th>Title</th>
-                                        <th>Summary</th>
-                                        <th>Sentiment</th>
+                                        <th><center>Link</center></th>
+                                        <th><center>Title</center></th>
+                                        <th><center>Summary</center></th>
+                                        <th><center>Sentiment</center></th>
                                     </tr>
                                     </thead> 
-                                    <tbody>
-                                    {% for item in articles %}
-                                    <tr>
-                                        <td><strong><a href="{{ item["URL"] }}">Go To Page</a></strong></td>
-                                        <td> {{ item["Title"] }} </td>
-                                        <td> {{ item["Body"] }} </td>
-                                        <td> {{ item["Sentiment"] }} </td>
-                                    </tr>
-                                    {% endfor %}
+                                    <tbody> 
+                                        {% for article in item["articles"] %}
+                                        <tr>
+                                        <td><strong><a href="{{ article["url"] }}">Go To Page</a></strong></td>
+                                        <td>{{ article["title"] }}</td>
+                                        <td>{{ article["body"] }}</td>
+                                        <td>0</td>
+                                        </tr>
+                                        {% endfor %}
                                     </tbody> 
                                 </table>
                             </div>
@@ -639,6 +675,7 @@ function zoomChart(){
             </div>
         </div>
     </div>
+    {% endfor %}
 
     <!-- jQuery -->
     <script src="static/jquery/jquery.min.js"></script>
@@ -649,9 +686,8 @@ function zoomChart(){
 
     <!-- Plugin JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-
-    <!-- tables JavaScript -->
     
+    <!-- tables JavaScript -->    
     <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
     
     <!-- Theme JavaScript -->
@@ -661,6 +697,13 @@ function zoomChart(){
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css">
 
+    var today = new Date();
+    var past = new Date("2014-10-31")
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+    var yyyy = today.getFullYear();
+
+    
     <script>
 	$(document).ready(function(){
 
