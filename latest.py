@@ -9,7 +9,13 @@ import ystockquote as ysq
 
 def format_currency(value):
     return "{0:,}".format(value)
-
+    
+def replace(value):
+    if value != "N/A":
+        return value
+    else:
+        return "0.0"
+    
 def latest_prices(company):
     ccode = str(company)
     compdata = ysq.get_all(ccode)
@@ -28,20 +34,21 @@ def latest_prices(company):
     vol_avg = int(compdata.get('avg_daily_volume'))
 
     latest = {
-        "Price" : price,
-        "Change from Previous Price" : change,
-        "Market Cap" : marketcap,
-        "Earnings Per Share" : float(eps),
-        "Price-Earnings Growth Ratio" : float(pegr),
-        "Price-Earnings Ratio" : float(per),
-        "Price-Sales Ratio" : float(psr),
-        "Yearly High" : year_hi,
-        "Yearly Low" : year_lo,
-        "Fifty-Day Moving Average" : fdmv,
-        "Two Hundred-Day Moving Average" : thdmv,
-        "Volume" : format_currency(vol),
-        "Volume (Avg)" : format_currency(vol_avg)
+        "Price" : replace(price),
+        "Change from Previous Price" : replace(change),
+        "Market Cap" : replace(marketcap),
+        "Earnings Per Share" : replace(eps),
+        "Price-Earnings Growth Ratio" : replace(pegr),
+        "Price-Earnings Ratio" : replace(per),
+        "Price-Sales Ratio" : replace(psr),
+        "Yearly High" : replace(year_hi),
+        "Yearly Low" : replace(year_lo),
+        "Fifty-Day Moving Average" : replace(fdmv),
+        "Two Hundred-Day Moving Average" : replace(thdmv),
+        "Volume" : replace(format_currency(vol)),
+        "Volume (Avg)" : replace(format_currency(vol_avg))
         }
+
     return latest 
     
      
