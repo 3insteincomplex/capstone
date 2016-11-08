@@ -124,7 +124,6 @@ def query_compare(company, competitors):
         }
         x += 1
         comparison.append(parsep)
-        print(parsep)
         
     return comparison
     

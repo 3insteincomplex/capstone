@@ -20,6 +20,726 @@
     <!-- tables CSS -->
     <link href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" rel="stylesheet">
     
+    
+    <!--formden.js communicates with FormDen server to validate fields and submit via AJAX -->
+    <script type="text/javascript" src="https://formden.com/static/cdn/formden.js"></script>
+
+    <!-- Special version of Bootstrap that is isolated to content wrapped in .bootstrap-iso -->
+    <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css">
+
+    <!--Font Awesome (added because you use icons in your prepend/append)-->
+    <link rel="stylesheet" href="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <!-- Custom Fonts -->
+    <link href="static/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body id="page-top" class="index">
+<script>
+window.location.hash = '#start';	
+</script>
+
+    <!-- Navigation -->
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="#page-top">Search</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right" style="height:60px">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#overview" style="font-size:20px">Overview</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#historical" style="font-size:20px">Historical</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#comparison" style="font-size:20px">Sector Comparison</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <img class="img-responsive" src="static/img/profile.png" alt="">
+                    <div class="intro-text">
+                        <span class="name">Sqwerpy</span>
+                        <span class="skills">Simple finance Queries in Python</span>
+                        <hr class="star-light">
+                    </div>
+                    <!-- Inline CSS based on choices in "Settings" tab -->
+                    <div class="bootstrap-iso">
+                            <div class="col-md-8 col-sm-8 col-xs-8 col-md-offset-3 col-sm-offset-1 col-xs-offset-1">
+                                <form action="/" class="form-horizontal" method="post">
+
+                                  <!-- Start from Date -->
+                                  <div class="form-group col-md-8">
+                                  <label class="control-label col-sm-4 requiredField" for="date">From:</label>
+                                      <div class="col-sm-8">
+                                          <div class="input-group">
+                                              <div class="input-group-addon">
+                                                  <i class="fa fa-calendar"></i>
+                                              </div>
+                                              <input class="form-control" id="from-date" name="from-date" placeholder="YYYY-MM-DD" type="text">
+                                          </div>
+                                      </div>
+                                   </div>
+                                  <!-- End from Date -->
+
+                                  <!-- Start to Date -->
+                                  <div class="form-group col-md-8">
+                                  <label class="control-label col-sm-4 requiredField" for="date">To:</label>
+                                      <div class="col-sm-8">
+                                          <div class="input-group">
+                                              <div class="input-group-addon">
+                                                  <i class="fa fa-calendar"></i>
+                                              </div>
+                                          <input class="form-control" id="to-date" name="to-date" placeholder="YYYY-MM-DD" type="text">
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <!-- End to date -->
+                                  
+                                  <!-- Start ASX code -->
+                                  <div class="form-group col-md-8">
+                                  <label class="control-label col-sm-4 requiredField" for="date">ASX Code:</label>
+                                      <div class="col-sm-8">
+                                          <div class="input-group">
+                                              <div class="input-group-addon">
+                                                  <i class="fa fa-bank"></i>
+                                              </div>
+                                          <input class="form-control" id="keyword" name="keyword" placeholder="CBA" type="text">
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <!-- End ASX code -->
+                                  
+                                  <!-- Start submit -->
+                                  <div class="form-group col-md-12">
+                                      <div class="col-sm-10">
+                                          <input name="_honey" style="display:none" type="text">
+                                          <button class="btn btn-primary " name="submit" type="submit">Submit</button>
+                                      </div>
+                                  </div>
+                                  <!-- End submit -->
+                                </form>
+                            </div>
+                    </div>
+                <!-- end datepicker -->
+
+
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Latest Section -->
+    <section id="overview">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h1 align="left"; style="color:#2C3E50"; id="start";>Performance Overview</h1>
+                    </br>
+                </div>
+            </div>
+            <div class="row">           
+               <!-- company profile start -->
+               <div class="name col-md-12">
+                   <br />
+                   <h3>{{ asx[1] }} <span class="label label-default"> ASX200: {{ asx[0] }}</span></h3>
+                </div>
+                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                    <h1>   </h1>
+                    <h1>   </h1>
+                    <p><b>Today's Quotes</b></p>
+                    <div class="panel panel-default">
+                            <table class="table" style="font-size:13px;">
+                                <tr>
+                                    <th style="color:#2C3E50">Price</th>
+                                    <td>AU${{ late["Price"] }} </td>
+                                </tr>
+                                <tr>
+                                    <th style="color:#2C3E50">Change from Previous Price</th>
+                                    <td>{{ late["Change from Previous Price"] }} </td>
+                                </tr>
+                                    <th style="color:#2C3E50">Market Cap</th>
+                                    <td>AU${{ late["Market Cap"] }}</td>
+                                <tr>
+                                </tr>
+                                    <th style="color:#2C3E50">Earnings Per Share</th>
+                                    <td>AU${{ late["Earnings Per Share"] }}</td>
+                                <tr>
+                                    <th style="color:#2C3E50">Yearly High</th>
+                                    <td>AU${{ late["Yearly High"] }} </td>
+                                </tr>
+                                <tr>
+                                    <th style="color:#2C3E50">Yearly Low</th>
+                                    <td>AU${{ late["Yearly Low"] }} </td>
+                                </tr>
+                                <tr>
+                                    <th style="color:#2C3E50">Fifty-Day Moving Average</th>
+                                    <td>{{ late["Fifty-Day Moving Average"] }} </td>
+                                </tr>
+                                <tr>
+                                    <th style="color:#2C3E50">Two Hundred-Day Moving Average</th>
+                                    <td> {{ late["Two Hundred-Day Moving Average"] }} </td>
+                                </tr>
+                                <tr>
+                                    <th style="color:#2C3E50">Volume</th>
+                                    <td>{{ late["Volume"] }}</td>
+                                </tr>
+                                <tr>
+                                    <th style="color:#2C3E50">Volume (Avg)</th>
+                                    <td>{{ late["Volume (Avg)"] }}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                <!-- company profile end -->
+                <!-- performance overview start -->
+                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
+                    <h1>   </h1>
+                    <h1>   </h1>
+                    <p><b>Market Sentiment: {% if market[1] == "Bullish"%}<span class="label label-success"> {% else %} <span class="label label-danger">{% endif %}{{ market[1] }}</span></b></p>
+                    <div class="well" style="color:#000000; font-size:16px;">
+                        <p style="font-size:16px">Over the duration of <font color="#4E92BF">{{ market[0] }} days</font>, the stock for 
+                        {{ asx[1] }} ({{ asx[0] }}){% if market[1] == "Bullish"%}<font color="#49A36A"> {% else %} <font color="#f44250">{% endif %} 
+                                                                                                {{ market[2] }} by {{ market[3] }} ({{ market[4] }}%).</font></p>
+                        <p style="font-size:16px">Stock has a {% if market[1] == "Bullish"%}<font color="#49A36A">{% else %}<font color="#f44250">{% endif %}volatility of {{ market[5] }}%</font> compared to the ASX200 average of 18.5%. <p>
+                        <p style="font-size:16px">The average closing price for this period was <font color="#49A36A">AU${{ market[6] }}</font>.<p>
+                        <p style="font-size:16px">The highest value for by the daily high was <font color="#49A36A">AU${{ market[7] }}</font> on {{ market[11] }}.</p>
+                        <p style="font-size:16px">The lowest value for the daily low was <font color="#f44250">AU${{ market[8] }}</font>, on {{ market[12] }}.</p>
+                        <p style="font-size:16px">The highest value for closing prices was <font color="#49A36A">$AU{{ market[9] }}</font> on {{ market[13] }}.</p>
+                        <p style="font-size:16px">The lowest value for closing price was <font color="#f44250">AU${{ market[10] }}</font> on {{ market[14] }}.</p>
+                        <p style="font-size:16px">Stock increased <font color="#49A36A">{{ market[15] }}</font>{% if market[15] == 1%} time {% else %} times {% endif %}and decreased <font color="#f44250">{{ market[16] }}</font>{% if market[16] == 1%} time {% else %} times{% endif %} during this period.</p>
+                     </div>
+                </div>
+                </div>
+                <!-- performance overview end -->
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                <p><b>Key Ratios</b></p>
+                </div>
+            
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <div id="circle2" style="width: 100%; height: 100%;"></div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-1">
+                    <div id="circle3" style="width: 100%; height: 100%;"></div>   
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-1">
+                    <div id="circle4" style="width: 100%; height: 100%;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Historical Section -->
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h1 align="left"; style="color:#2C3E50"; id="historical";>Historical Data</h1>
+                    </br>
+                </div>
+            </div>
+            <div class="row">
+                <div class="name col-md-12">
+                    <h3>{{ asx[1] }} <span class="label label-default"> ASX200: {{ asx[0] }}</span></h3>
+                </div>
+            </div>
+            <div class="row">              
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">  
+                    <h1>   </h1>
+                    <h1>   </h1>
+                    <p><b>Historical Closing Prices</b></p>
+                    <div id="chartdiv2" style="width:100%; height:500px; font-size:11px; color:#FFFFFF; background-color: #2C3E50;"></div>
+                </div>
+                <!-- historical price table start -->
+                <div class="col-lg-6 col-md-6 col-s-6 col-xs-12">                                
+                    </br>
+                    </br>
+                    <p><b>Price & Article Lookup</b></p>
+                        <div class="panel panel-default">
+                            <table id="example" class="display" cellspacing="0" width="100%">                     
+                                <thead> 
+                                    <tr>
+                                        <th style="color:#000000">Date</th>
+                                        <th style="color:#000000">Close</th>
+                                        <th style="color:#000000">Open</th>
+                                        <th style="color:#000000">High</th>
+                                        <th style="color:#000000">Low</th>
+                                        <th style="color:#000000">Articles</th>
+                                    </tr>
+                                </thead> 
+                                <tbody>
+                                {% for item in news %}
+                                    <tr>
+                                        <td style="color:#000000"> {{ item["date"] }} </td>
+                                        <td style="color:#000000"> {{ item["close"] }} </td>
+                                        <td style="color:#000000"> {{ item["open"] }} </td>
+                                        <td style="color:#000000"> {{ item["high"] }} </td>
+                                        <td style="color:#000000"> {{ item["low"] }} </td>
+                                        {% if item["article_status"] != 0 %}
+                                            <td> <a href="#portfolioModal{{ item["date"]  }}" class="portfolio-link" data-toggle="modal">Show {{ item["article_status"]}}</a> </td>  
+                                        {% else %}
+                                            <td style="color:#000000">No articles</td>
+                                        {% endif %}
+                                    </tr>                                   
+                                {% endfor %}
+                                </tbody> 
+                            </table>
+                        </div>
+                </div>
+                <!-- historical price table end --> 
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h1 align="left"; style="color:#2C3E50"; id="comparison";>Sector Comparison</h1>
+                    </br>
+                </div>
+            </div>
+            <div class="row">
+                <div class="name col-md-12">                    
+                    <h3>{{ asx[1] }} <span class="label label-default"> ASX200: {{ asx[0] }}</span></h3>
+                    </br>
+                </div>
+                <!-- sector comparison start -->
+                <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
+                    <h1> </h1>
+                    <h1> </h1>
+                    <div id="chartdiv" style="height:500px; width:100%; font-size:11px; color:#FFFFFF; background-color: #2C3E50;"></div>
+                </div>
+                
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <h1> </h1>
+                    <h1> </h1>
+                    <p><b>Sector: {{ asx[2] }}</b></p>
+                    <p style = "font-size:16px">Comparison between the selected company and three of its best competitors in the same sector.</p>
+                    </br>
+                    </br>
+                    <p><b>Legend</b></p>
+                    <div class="panel panel-default">
+                            <table class="table" style="width:100%" >                     
+                            <thead>
+                                    <td style="font-size:12px"><strong>Graph Label</strong></td>
+                                    <td style="font-size:12px"><strong>Company Name</strong></td>
+                                    <td style="font-size:12px"><strong>Market Cap</strong></td>
+
+                            </thead>    
+                            <tbody>
+                                <tr>
+                                    <td style="font-size:12px; color: #FF6600"><strong>ASX1</strong></td>
+                                    <td style="font-size:12px">{{ asx[1] }}</td>
+                                    <td style="font-size:12px">${{ asx[3] }}</td>
+                                </tr>
+                                <tr>
+                                    <td style="font-size:12px; color: #FCD202"><strong>ASX2</strong></td>
+                                    <td style="font-size:12px">{{ competitors[1] }}</td>
+                                    <td style="font-size:12px">${{ competitors[2] }}</td>
+                                    
+
+                                </tr>
+                                <tr>
+                                    <td style="font-size:12px; color: #B0DE09"><strong>ASX3</strong></td>
+                                    <td style="font-size:12px">{{ competitors[4] }}</td>
+                                    <td style="font-size:12px">${{ competitors[5] }}</td>
+                               
+                                </tr>
+                                    <td style="font-size:12px; color: #0000E5"><strong>ASX4</strong></td>
+                                    <td style="font-size:12px">{{ competitors[7] }}</td>
+                                    <td style="font-size:12px">${{ competitors[8] }}</td>                                
+                                <tr>
+                                    
+                                </tr>
+                            </tbody> 
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- sector comparison end -->
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">  
+                </br>
+                </br>
+                    <p><b>GICS Industry Sectors - Market Cap Weight(%)</b></p>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">  
+                    <div class="ct-chart ct-square"></div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1"> 
+                    </br>
+                    </br>
+                    </br>
+                    </br>                    
+                    <div class="well" style="color:#000000; font-size:16px; width: 100%; height:300px">                    
+                        <p style="font-size:16px">Financials - 55%</p>
+                        <p style="font-size:16px">Materials - 11.4%</p>
+                        <p style="font-size:16px">Consumer Staples - 9.1%</p>
+                        <p style="font-size:16px">Telecommunication - 7%</p>                             
+                        <p style="font-size:16px">Health Care - 5.3%</p>                               
+                        <p style="font-size:16px">Real Estate - 4.8%</p>                               
+                        <p style="font-size:16px">Industrials - 4.6%</p>                                
+                        <p style="font-size:16px">Energy - 2.8%</p>                               
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="footer-above">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-col col-md-4">
+                        <h3>About this App</h3>
+                        <p> Financial News and Prices Search
+                            <br>Market Analysis Tool</p>
+                    </div>
+                    <div class="footer-col col-md-4">
+                        <h3>About ASX200</h3>
+                    </div>
+                    <div class="footer-col col-md-4">
+                        <h3>About the Team</h3>
+                        <p>Group 13
+                        <br>Macquarie University</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-below">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        Copyright &copy; Sqwerpy 2016
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+    <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
+        <a class="btn btn-primary" href="#page-top">
+            <i class="fa fa-chevron-up"></i>
+        </a>
+    </div>
+
+    <!-- Portfolio Modals -->
+    {% for item in news %}
+    <div class="portfolio-modal modal fade" id="portfolioModal{{ item["date"] }}" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>Newspaper Mode</h2>
+                            <hr class="star-primary">
+                            <p><i>This section provides a collection of articles published on the selected date. (currently using test data)</i></p>
+                            <div class="panel panel-default">
+                                <table class="table">                     
+                                    <thead> 
+                                    <tr>
+                                        <th><center>Link</center></th>
+                                        <th><center>Title</center></th>
+                                        <th><center>Summary</center></th>
+                                        <th><center>Sentiment</center></th>
+                                    </tr>
+                                    </thead> 
+                                    <tbody> 
+                                        {% for article in item["articles"] %}
+                                        <tr>
+                                        <td><strong><a href="{{ article["url"] }}">Go To Page</a></strong></td>
+                                        <td>{{ article["title"] }}</td>
+                                        <td>{{ article["body"] }}</td>
+                                        <td>0</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody> 
+                                </table>
+                            </div>
+
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+    <!-- jQuery -->
+    <script src="static/jquery/jquery.min.js"></script>
+    
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="static/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../static/js/moment.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    
+    <!-- tables JavaScript -->    
+    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    
+    <!-- Theme JavaScript -->
+    <script src="static/js/freelancer.min.js"></script>
+    
+    <!-- ProgressBar.js -->
+    <script src="https://rawgit.com/kimmobrunfeldt/progressbar.js/1.0.0/dist/progressbar.js"></script>
+       <script>
+
+var bar = new ProgressBar.Circle(circle2, {
+  color: '#aaa',
+  // This has to be the same size as the maximum width to
+  // prevent clipping
+  strokeWidth: 10,
+  trailWidth: 10,
+  easing: 'easeInOut',
+  duration: 5500,
+  text: {
+    autoStyleContainer: true
+  },
+  from: { color: '#FFEA82', width: 5},
+  to: { color: '#4E92BF', width: 5 },
+  // Set default step function for all animate calls
+  step: function(state, circle) {
+    circle.path.setAttribute('stroke', state.color);
+    circle.path.setAttribute('stroke-width', state.width);
+
+    var value = "<center>P/E Growth:</br>" + {{ late["Price-Earnings Growth Ratio"] }}+"</center>"
+    if (value === "N/A") {
+      circle.setText('0.0');
+    } else {
+      circle.setText(value);
+    }
+	circle.text.style.color = state.color;
+  }
+});
+bar.text.style.fontFamily = '"Montserrat", Helvetica, sans-serif';
+bar.text.style.fontSize = '25px';
+
+bar.animate(1.0);  // Number from 0.0 to 1.0
+
+    </script>
+       <script>
+       
+       var bar = new ProgressBar.Circle(circle3, {
+  color: '#aaa',
+  // This has to be the same size as the maximum width to
+  // prevent clipping
+  strokeWidth: 10,
+  trailWidth: 10,
+  easing: 'easeInOut',
+  duration: 5500,
+  text: {
+    autoStyleContainer: true
+  },
+  from: { color: '#FFEA82', width: 5},
+  to: { color: '#18BC9C', width: 5 },
+  // Set default step function for all animate calls
+  step: function(state, circle) {
+    circle.path.setAttribute('stroke', state.color);
+    circle.path.setAttribute('stroke-width', state.width);
+
+    var value = "<center>P/E:</br>" + {{ late["Price-Earnings Ratio"] }}+"</center>"
+    if (value === "N/A") {
+      circle.setText('0.0');
+    } else {
+      circle.setText(value);
+    }
+	circle.text.style.color = state.color;
+  }
+});
+bar.text.style.fontFamily = '"Montserrat", Helvetica, sans-serif';
+bar.text.style.fontSize = '25px';
+
+bar.animate(1.0);  // Number from 0.0 to 1.0
+    </script>
+       <script>
+
+var bar = new ProgressBar.Circle(circle4, {
+  color: '#aaa',
+  // This has to be the same size as the maximum width to
+  // prevent clipping
+  strokeWidth: 10,
+  trailWidth: 10,
+  easing: 'easeInOut',
+  duration: 5500,
+  text: {
+    autoStyleContainer: true
+  },
+  from: { color: '#FFEA82', width: 5},
+  to: { color: '#49A36A', width: 5 },
+  // Set default step function for all animate calls
+  step: function(state, circle) {
+    circle.path.setAttribute('stroke', state.color);
+    circle.path.setAttribute('stroke-width', state.width);
+
+    var value = "<center>P/S:</br>" + {{ late["Price-Sales Ratio"] }}+"</center>"
+    if (value === "N/A") {
+      circle.setText('0.0');
+    } else {
+      circle.setText(value);
+    }
+	circle.text.style.color = state.color;
+  }
+});
+bar.text.style.fontFamily = '"Montserrat", Helvetica, sans-serif';
+bar.text.style.fontSize = '25px';
+
+bar.animate(1.0);  // Number from 0.0 to 1.0
+
+    </script>
+    
+    <!-- Chartist.js -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+    <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js">
+    </script>
+    <script>
+    
+var chart = new Chartist.Pie('.ct-chart', {
+  series: [55, 11, 9, 7, 5, 5, 5, 3],
+  labels: [1, 2, 3, 4, 5, 6, 7, 8]
+}, {
+  donut: true,
+  donutWidth: 90,
+  showLabel: false
+});
+
+chart.on('draw', function(data) {
+  if(data.type === 'slice') {
+    // Get the total path length in order to use for dash array animation
+    var pathLength = data.element._node.getTotalLength();
+
+    // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+    data.element.attr({
+      'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+    });
+
+    // Create animation definition while also assigning an ID to the animation for later sync usage
+    var animationDefinition = {
+      'stroke-dashoffset': {
+        id: 'anim' + data.index,
+        dur: 500,
+        from: -pathLength + 'px',
+        to:  '0px',
+        easing: Chartist.Svg.Easing.easeOutQuint,
+        // We need to use `fill: 'freeze'` otherwise our animation will fall back to initial (not visible)
+        fill: 'freeze'
+      }
+    };
+
+    // If this was not the first slice, we need to time the animation so that it uses the end sync event of the previous animation
+    if(data.index !== 0) {
+      animationDefinition['stroke-dashoffset'].begin = 'anim' + (data.index - 1) + '.end';
+    }
+
+    // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+    data.element.attr({
+      'stroke-dashoffset': -pathLength + 'px'
+    });
+
+    // We can't use guided mode as the animations need to rely on setting begin manually
+    // See http://gionkunz.github.io/chartist-js/api-documentation.html#chartistsvg-function-animate
+    data.element.animate(animationDefinition, false);
+  }
+});
+  </script>
+
+    <!-- Include Date Range Picker -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css">
+
+    var today = new Date();
+    var past = new Date("2014-10-31")
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+    var yyyy = today.getFullYear();
+
+    
+    <script>
+	$(document).ready(function(){
+
+    var today = new Date();
+    var past = new Date("2014-10-31")
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+    var yyyy = today.getFullYear();
+
+		var date_input1=$('input[name="from-date"]'); //our date input has the name "date"
+		var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+		date_input1.datepicker({
+			format: 'yyyy-mm-dd',
+			container: container,
+			todayHighlight: true,
+			autoclose: true,
+       startDate: past,
+      endDate: today
+		}).on('changeDate', function(selected){
+        startDate = new Date(selected.date.valueOf());
+        startDate.setDate(startDate.getDate(new Date(selected.date.valueOf())));
+        $(date_input2).datepicker('setStartDate', startDate);
+    }); 
+
+    var date_input2=$('input[name="to-date"]'); //our date input has the name "date"
+		var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+
+		date_input2.datepicker({
+			format: 'yyyy-mm-dd',
+			container: container,
+			todayHighlight: true,
+			autoclose: true,
+      endDate: today
+		}).on('changeDate', function(selected){
+        endDate = new Date(selected.date.valueOf());
+        endDate.setDate(endDate.getDate(new Date(selected.date.valueOf())));
+        $(date_input1).datepicker('setEndDate', endDate);
+    });
+	})
+</script>
+
+<script>
+$(document).ready(function() {
+    $('#example').DataTable();
+} );
+</script>
+    
     <!-- amCharts.js -->
     <script src="https://www.amcharts.com/lib/3/amcharts.js" type="text/javascript"></script>
     <script src="https://www.amcharts.com/lib/3/serial.js" type="text/javascript"></script>
@@ -213,544 +933,6 @@ function zoomChart(){
       chart.zoomToIndexes( chart.dataProvider.length - 50, chart.dataProvider.length - 1 );
     }
     </script>
-    
-    
-    <!--formden.js communicates with FormDen server to validate fields and submit via AJAX -->
-    <script type="text/javascript" src="https://formden.com/static/cdn/formden.js"></script>
-
-    <!-- Special version of Bootstrap that is isolated to content wrapped in .bootstrap-iso -->
-    <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css">
-
-    <!--Font Awesome (added because you use icons in your prepend/append)-->
-    <link rel="stylesheet" href="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css">
-
-    <!-- Custom Fonts -->
-    <link href="static/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-</head>
-
-<body id="page-top" class="index">
-
-    <!-- Navigation -->
-    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
-                </button>
-                <a class="navbar-brand" href="#page-top">Search</a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right" style="height:60px">
-                    <li class="hidden">
-                        <a href="#page-top"></a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="#overview" style="font-size:20px">Overview</a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="#historical" style="font-size:20px">Historical</a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="#comparison" style="font-size:20px">Sector Comparison</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-    </nav>
-
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <img class="img-responsive" src="static/img/profile.png" alt="">
-                    <div class="intro-text">
-                        <span class="name">Sqwerpy</span>
-                        <span class="skills">Simple finance Queries in Python</span>
-                        <hr class="star-light">
-                    </div>
-                    <!-- Inline CSS based on choices in "Settings" tab -->
-                    <div class="bootstrap-iso">
-                            <div class="col-md-8 col-sm-8 col-xs-8 col-md-offset-3 col-sm-offset-1 col-xs-offset-1">
-                                <form action="/" class="form-horizontal" method="post">
-
-                                  <!-- Start from Date -->
-                                  <div class="form-group col-md-8">
-                                  <label class="control-label col-sm-4 requiredField" for="date">From:</label>
-                                      <div class="col-sm-8">
-                                          <div class="input-group">
-                                              <div class="input-group-addon">
-                                                  <i class="fa fa-calendar"></i>
-                                              </div>
-                                              <input class="form-control" id="from-date" name="from-date" placeholder="YYYY-MM-DD" type="text">
-                                          </div>
-                                      </div>
-                                   </div>
-                                  <!-- End from Date -->
-
-                                  <!-- Start to Date -->
-                                  <div class="form-group col-md-8">
-                                  <label class="control-label col-sm-4 requiredField" for="date">To:</label>
-                                      <div class="col-sm-8">
-                                          <div class="input-group">
-                                              <div class="input-group-addon">
-                                                  <i class="fa fa-calendar"></i>
-                                              </div>
-                                          <input class="form-control" id="to-date" name="to-date" placeholder="YYYY-MM-DD" type="text">
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <!-- End to date -->
-                                  
-                                  <!-- Start ASX code -->
-                                  <div class="form-group col-md-8">
-                                  <label class="control-label col-sm-4 requiredField" for="date">ASX Code:</label>
-                                      <div class="col-sm-8">
-                                          <div class="input-group">
-                                              <div class="input-group-addon">
-                                                  <i class="fa fa-bank"></i>
-                                              </div>
-                                          <input class="form-control" id="keyword" name="keyword" placeholder="CBA" type="text">
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <!-- End ASX code -->
-                                  
-                                  <!-- Start submit -->
-                                  <div class="form-group col-md-12">
-                                      <div class="col-sm-10">
-                                          <input name="_honey" style="display:none" type="text">
-                                          <button class="btn btn-primary " name="submit" type="submit">Submit</button>
-                                      </div>
-                                  </div>
-                                  <!-- End submit -->
-                                </form>
-                            </div>
-                    </div>
-                <!-- end datepicker -->
-
-
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Latest Section -->
-    <section id="overview">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h1 align="left"; style="color:#2C3E50">Performance Overview</h1>
-                    </br>
-                    </br>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <br />
-                    
-                </div>              
-               <!-- company profile start -->
-               <div class="name col-md-12">
-                    <h3>{{ asx[1] }} <span class="label label-default"> ASX200: {{ asx[0] }}</span></h3>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <h1>   </h1>
-                    <h1>   </h1>
-                    <p><b>Today's Quotes</b></p>
-                    <div class="panel panel-default">
-                            <table class="table" style="font-size:15px;">
-                                <tr>
-                                    <th style="color:#2C3E50">Price</th>
-                                    <td>AU${{ late["Price"] }} </td>
-                                </tr>
-                                <tr>
-                                    <th style="color:#2C3E50">Change from Previous Price</th>
-                                    <td>{{ late["Change from Previous Price"] }} </td>
-                                </tr>
-                                <tr>
-                                    <th style="color:#2C3E50">Yearly High</th>
-                                    <td>AU${{ late["Yearly High"] }} </td>
-                                </tr>
-                                <tr>
-                                    <th style="color:#2C3E50">Yearly Low</th>
-                                    <td>AU${{ late["Yearly Low"] }} </td>
-                                </tr>
-                                <tr>
-                                    <th style="color:#2C3E50">Fifty-Day Moving Average</th>
-                                    <td>{{ late["Fifty-Day Moving Average"] }} </td>
-                                </tr>
-                                <tr>
-                                    <th style="color:#2C3E50">Two Hundred-Day Moving Average</th>
-                                    <td> {{ late["Two Hundred-Day Moving Average"] }} </td>
-                                </tr>
-                                <tr>
-                                    <th style="color:#2C3E50">Volume</th>
-                                    <td>{{ late["Volume"] }}</td>
-                                </tr>
-                                <tr>
-                                    <th style="color:#2C3E50">Volume (Avg)</th>
-                                    <td>{{ late["Volume (Avg)"] }}</td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                <!-- company profile end -->
-                <!-- profile radial graph start -->
-                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
-                    <h1>   </h1>
-                    <h1>   </h1>
-                    <p><b>Market Sentiment: {% if market[1] == "Bullish"%}<span class="label label-success"> {% else %} <span class="label label-danger">{% endif %}{{ market[1] }}</span></b></p>
-                    <div class="well" style="color:#000000; font-size:16px;">
-                        <p style="font-size:16px">Over the duration of <font color="#42b3f4">{{ market[0] }} days</font>, the stock for 
-                        {{ asx[1] }}({{ asx[0] }}){% if market[1] == "Bullish"%}<font color="#42f483"> {% else %} <font color="#f44250">{% endif %} 
-                                                                                                {{ market[2] }} by {{ market[3] }} ({{ market[4] }}%).</font></p>
-                        <p style="font-size:16px">Stock has a {% if market[1] == "Bullish"%}<font color="#42f483">{% else %}<font color="#f44250">{% endif %}volatility of {{ market[5] }}%</font> compared to the ASX200 average of 18.5%. <p>
-                        <p style="font-size:16px">The average closing price for this period was <font color="#42b3f4">AU${{ market[6] }}</font>.<p>
-                        <p style="font-size:16px">The highest value for by the daily high was <font color="#42f483">AU${{ market[7] }}</font> on {{ market[11] }}, and the lowest value for the daily low was <font color="#f44250">AU${{ market[8] }}</font>, on {{ market[12] }}.</p>
-                        <p style="font-size:16px">The highest value for closing prices was <font color="#42f483">$AU{{ market[9] }}</font> on {{ market[13] }}, and the lowest value for closing price was <font color="#f44250">AU${{ market[10] }}</font> on {{ market[14] }}.</p>
-                        <p style="font-size:16px">Stock increased <font color="#42f483">{{ market[15] }}</font>{% if market[15] == 1%} time {% else %} times {% endif %}and decreased <font color="#f44250">{{ market[16] }}</font>{% if market[16] == 1%} time {% else %} times{% endif %} during this period.</p>
-                     </div>
-                </div>
-                </div>
-                <!-- radial graph end -->
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                <tr>
-                                    <th>Market Cap</th>
-                                    <td>AU${{ late["Market Cap"] }} </td>
-                                </tr>
-                                <tr>
-                                    <th>Earnings Per Share</th>
-                                    <td>{{ late["Earnings Per Share"] }} </td>
-                                </tr>
-                                <tr>
-                                    <th>Price-Earnings Growth Ratio</th>
-                                    <td>{{ late["Price-Earnings Growth Ratio"] }} </td>
-                                </tr>
-                                <tr>
-                                    <th>Price-Earnings Ratio</th>
-                                    <td>{{ late["Price-Earnings Ratio"] }} </td>
-                                </tr>
-                                <tr>
-                                    <th>Price-Sales Ratio</th>
-                                    <td>{{ late["Price-Sales Ratio"] }} </td>
-                                </tr>          
-            </div>
-        </div>
-    </section>
-
-    <!-- Historical Section -->
-    <section id="historical">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h1 align="left"; style="color:#2C3E50">Historical Data</h1>
-                    </br>
-                    </br>
-                </div>
-            </div>
-            <div class="row">
-                <div class="name col-md-12">
-                    <h3>{{ asx[1] }} <span class="label label-default"> ASX200: {{ asx[0] }}</span></h3>
-                </div>
-            </div>
-            <div class="row">              
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">  
-                    <h1>   </h1>
-                    <h1>   </h1>
-                    <p><b>Historical Closing Prices</b></p>
-                    <div id="chartdiv2" style="width:100%; height:500px; font-size:11px; color:#FFFFFF; background-color: #2C3E50;"></div>
-                </div>
-                <!-- historical price table start -->
-                <div class="col-lg-6 col-md-6 col-xs-6 col-xs-12">                                
-                    </br>
-                    <p><b>Price & Article Lookup</b></p>
-                        <div class="panel panel-default">
-                            <table id="example" class="display" cellspacing="0" width="100%">                     
-                                <thead> 
-                                    <tr>
-                                        <th style="color:#000000">Date</th>
-                                        <th style="color:#000000">Close</th>
-                                        <th style="color:#000000">Open</th>
-                                        <th style="color:#000000">High</th>
-                                        <th style="color:#000000">Low</th>
-                                        <th style="color:#000000">Articles</th>
-                                    </tr>
-                                </thead> 
-                                <tbody>
-                                {% for item in news %}
-                                    <tr>
-                                        <td style="color:#000000"> {{ item["date"] }} </td>
-                                        <td style="color:#000000"> {{ item["close"] }} </td>
-                                        <td style="color:#000000"> {{ item["open"] }} </td>
-                                        <td style="color:#000000"> {{ item["high"] }} </td>
-                                        <td style="color:#000000"> {{ item["low"] }} </td>
-                                        {% if item["article_status"] != 0 %}
-                                            <td> <a href="#portfolioModal{{ item["date"]  }}" class="portfolio-link" data-toggle="modal">Show {{ item["article_status"]}}</a> </td>  
-                                        {% else %}
-                                            <td style="color:#000000">No articles</td>
-                                        {% endif %}
-                                    </tr>                                   
-                                {% endfor %}
-                                </tbody> 
-                            </table>
-                        </div>
-                </div>
-                <!-- historical price table end --> 
-            </div>
-        </div>
-    </section>
-
-    <!-- Comparison Section -->
-    <section id="comparison">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h1 align="left"; style="color:#2C3E50">Sector Comparison</h1>
-                    </br>
-                    </br>
-                </div>
-            </div>
-            <div class="row">
-                <div class="name col-md-12">                    
-                    <h3>{{ asx[1] }} <span class="label label-default"> ASX200: {{ asx[0] }}</span></h3>
-                    </br>
-                </div>
-                <!-- sector comparison start -->
-                <div class="col-lg-9 col-md-8 col-sm-6 col-xs-12">
-                    <h1> </h1>
-                    <h1> </h1>
-                    <div id="chartdiv" style="height:500px; width:100%; font-size:11px; color:#FFFFFF; background-color: #2C3E50;"></div>
-                </div>
-                
-                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                    <h1> </h1>
-                    <h1> </h1>
-                    <p><b>Sector: {{ asx[2] }}</b></p>
-                    <p style = "font-size:16px">Comparison between the selected company and three of its best competitors in the same sector.</p>
-                    </br>
-                    </br>
-                    <p><b>Legend</b></p>
-                    <div class="panel panel-default">
-                            <table class="table" >                     
-                            <thead>
-                                    <td style="font-size:12px"><strong>Graph Label</strong></td>
-                                    <td style="font-size:12px"><strong>Company Name</strong></td>
-                                    <td style="font-size:12px"><strong>Market Cap</strong></td>
-
-                            </thead>    
-                            <tbody>
-                                <tr>
-                                    <td style="font-size:12px; color: #FF6600"><strong>ASX1</strong></td>
-                                    <td style="font-size:12px">{{ asx[1] }}</td>
-                                    <td style="font-size:12px">${{ asx[3] }}</td>
-                                </tr>
-                                <tr>
-                                    <td style="font-size:12px; color: #FCD202"><strong>ASX2</strong></td>
-                                    <td style="font-size:12px">{{ competitors[1] }}</td>
-                                    <td style="font-size:12px">${{ competitors[2] }}</td>
-                                    
-
-                                </tr>
-                                <tr>
-                                    <td style="font-size:12px; color: #B0DE09"><strong>ASX3</strong></td>
-                                    <td style="font-size:12px">{{ competitors[4] }}</td>
-                                    <td style="font-size:12px">${{ competitors[5] }}</td>
-                               
-                                </tr>
-                                    <td style="font-size:12px; color: #0000E5"><strong>ASX4</strong></td>
-                                    <td style="font-size:12px">{{ competitors[7] }}</td>
-                                    <td style="font-size:12px">${{ competitors[8] }}</td>                                
-                                <tr>
-                                    
-                                </tr>
-                            </tbody> 
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <!-- sector comparison end -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="text-center">
-        <div class="footer-above">
-            <div class="container">
-                <div class="row">
-                    <div class="footer-col col-md-4">
-                        <h3>About this App</h3>
-                        <p> Financial News and Prices Search
-                            <br>Market Analysis Tool</p>
-                    </div>
-                    <div class="footer-col col-md-4">
-                        <h3>About ASX200</h3>
-                    </div>
-                    <div class="footer-col col-md-4">
-                        <h3>About the Team</h3>
-                        <p>Group 13
-                        <br>Macquarie University</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="footer-below">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        Copyright &copy; Sqwerpy 2016
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
-    <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
-        <a class="btn btn-primary" href="#page-top">
-            <i class="fa fa-chevron-up"></i>
-        </a>
-    </div>
-
-    <!-- Portfolio Modals -->
-    {% for item in news %}
-    <div class="portfolio-modal modal fade" id="portfolioModal{{ item["date"] }}" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-content">
-            <div class="close-modal" data-dismiss="modal">
-                <div class="lr">
-                    <div class="rl">
-                    </div>
-                </div>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2">
-                        <div class="modal-body">
-                            <h2>Newspaper Mode</h2>
-                            <hr class="star-primary">
-                            <p><i>This section provides a collection of articles published on the selected date. (currently using test data)</i></p>
-                            <div class="panel panel-default">
-                                <table class="table">                     
-                                    <thead> 
-                                    <tr>
-                                        <th><center>Link</center></th>
-                                        <th><center>Title</center></th>
-                                        <th><center>Summary</center></th>
-                                        <th><center>Sentiment</center></th>
-                                    </tr>
-                                    </thead> 
-                                    <tbody> 
-                                        {% for article in item["articles"] %}
-                                        <tr>
-                                        <td><strong><a href="{{ article["url"] }}">Go To Page</a></strong></td>
-                                        <td>{{ article["title"] }}</td>
-                                        <td>{{ article["body"] }}</td>
-                                        <td>0</td>
-                                        </tr>
-                                        {% endfor %}
-                                    </tbody> 
-                                </table>
-                            </div>
-
-                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    {% endfor %}
-
-    <!-- jQuery -->
-    <script src="static/jquery/jquery.min.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="static/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../static/js/moment.min.js"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-    
-    <!-- tables JavaScript -->    
-    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-    
-    <!-- Theme JavaScript -->
-    <script src="static/js/freelancer.min.js"></script>
-
-    <!-- Include Date Range Picker -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css">
-
-    var today = new Date();
-    var past = new Date("2014-10-31")
-    var dd = today.getDate();
-    var mm = today.getMonth()+1; //January is 0!
-    var yyyy = today.getFullYear();
-
-    
-    <script>
-	$(document).ready(function(){
-
-    var today = new Date();
-    var past = new Date("2014-10-31")
-    var dd = today.getDate();
-    var mm = today.getMonth()+1; //January is 0!
-    var yyyy = today.getFullYear();
-
-		var date_input1=$('input[name="from-date"]'); //our date input has the name "date"
-		var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-		date_input1.datepicker({
-			format: 'yyyy-mm-dd',
-			container: container,
-			todayHighlight: true,
-			autoclose: true,
-       startDate: past,
-      endDate: today
-		}).on('changeDate', function(selected){
-        startDate = new Date(selected.date.valueOf());
-        startDate.setDate(startDate.getDate(new Date(selected.date.valueOf())));
-        $(date_input2).datepicker('setStartDate', startDate);
-    }); 
-
-    var date_input2=$('input[name="to-date"]'); //our date input has the name "date"
-		var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-
-		date_input2.datepicker({
-			format: 'yyyy-mm-dd',
-			container: container,
-			todayHighlight: true,
-			autoclose: true,
-      endDate: today
-		}).on('changeDate', function(selected){
-        endDate = new Date(selected.date.valueOf());
-        endDate.setDate(endDate.getDate(new Date(selected.date.valueOf())));
-        $(date_input1).datepicker('setEndDate', endDate);
-    });
-	})
-</script>
-
-<script>
-$(document).ready(function() {
-    $('#example').DataTable();
-} );
-</script>
-    
     
 </body>
 

@@ -7,6 +7,9 @@ Created on Thu Oct 20 11:35:26 2016
 
 import ystockquote as ysq
 
+def format_currency(value):
+    return "{0:,}".format(value)
+
 def latest_prices(company):
     ccode = str(company)
     compdata = ysq.get_all(ccode)
@@ -21,23 +24,23 @@ def latest_prices(company):
     year_lo = compdata.get('fifty_two_week_low')
     fdmv = compdata.get('fifty_day_moving_avg')
     thdmv = compdata.get('two_hundred_day_moving_avg')
-    vol = compdata.get('volume')
-    vol_avg = compdata.get('avg_daily_volume')
+    vol = int(compdata.get('volume'))
+    vol_avg = int(compdata.get('avg_daily_volume'))
 
     latest = {
         "Price" : price,
         "Change from Previous Price" : change,
         "Market Cap" : marketcap,
-        "Earnings Per Share" : eps,
-        "Price-Earnings Growth Ratio" : pegr,
-        "Price-Earnings Ratio" : per,
-        "Price-Sales Ratio" : psr,
+        "Earnings Per Share" : float(eps),
+        "Price-Earnings Growth Ratio" : float(pegr),
+        "Price-Earnings Ratio" : float(per),
+        "Price-Sales Ratio" : float(psr),
         "Yearly High" : year_hi,
         "Yearly Low" : year_lo,
         "Fifty-Day Moving Average" : fdmv,
         "Two Hundred-Day Moving Average" : thdmv,
-        "Volume" : vol,
-        "Volume (Avg)" : vol_avg
+        "Volume" : format_currency(vol),
+        "Volume (Avg)" : format_currency(vol_avg)
         }
     return latest 
     
