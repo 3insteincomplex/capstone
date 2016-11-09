@@ -163,7 +163,7 @@ window.location.hash = '#start';
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h1 align="left"; style="color:#2C3E50"; id="start";>Performance Overview</h1>
+                    <h1 align="left"; style="color:#2C3E50"; id="start";>Performance Overview <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">?</button></h1>
                     </br>
                 </div>
             </div>
@@ -176,7 +176,7 @@ window.location.hash = '#start';
                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
                     <h1>   </h1>
                     <h1>   </h1>
-                    <p><b>Today's Quotes</b></p>
+                    <p><b>Today's Quotes</b> <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">?</button></p>
                     <div class="panel panel-default">
                             <table class="table" style="font-size:13px;">
                                 <tr>
@@ -225,7 +225,7 @@ window.location.hash = '#start';
                 <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
                     <h1>   </h1>
                     <h1>   </h1>
-                    <p><b>Market Sentiment: {% if market[1] == "Bullish"%}<span class="label label-success"> {% else %} <span class="label label-danger">{% endif %}{{ market[1] }}</span></b></p>
+                    <p><b>Market Sentiment: {% if market[1] == "Bullish"%}<span class="label label-success"> {% else %} <span class="label label-danger">{% endif %}{{ market[1] }}</span></b> <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">?</button></p>
                     <div class="well" style="color:#000000; font-size:16px;">
                         <p style="font-size:16px">Over the duration of <font color="#4E92BF">{{ market[0] }} days</font>, the stock for 
                         {{ asx[1] }} ({{ asx[0] }}){% if market[1] == "Bullish"%}<font color="#49A36A"> {% else %} <font color="#f44250">{% endif %} 
@@ -243,7 +243,7 @@ window.location.hash = '#start';
                 <!-- performance overview end -->
                 <div class="col-lg-12 col-md-12 col-sm-12">
                 </br>
-                <p><b>Key Ratios</b></p>
+                <p><b>Key Ratios</b> <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">?</button></p>
                 </div>
             
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
@@ -264,7 +264,7 @@ window.location.hash = '#start';
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h1 align="left"; style="color:#2C3E50"; id="historical";>Historical Data</h1>
+                    <h1 align="left"; style="color:#2C3E50"; id="historical";>Historical Data <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">?</button></h1>
                     </br>
                 </div>
             </div>
@@ -277,14 +277,14 @@ window.location.hash = '#start';
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">  
                     <h1>   </h1>
                     <h1>   </h1>
-                    <p><b>Historical Closing Prices</b></p>
+                    <p><b>Historical Closing Prices</b> <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">?</button></p>
                     <div id="chartdiv2" style="width:100%; height:500px; font-size:11px; color:#FFFFFF; background-color: #2C3E50;"></div>
                 </div>
                 <!-- historical price table start -->
                 <div class="col-lg-6 col-md-6 col-s-6 col-xs-12">                                
                     </br>
                     </br>
-                    <p><b>Price & Article Lookup</b></p>
+                    <p><b>Price & Article Lookup</b> <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">?</button></p>
                         <div class="panel panel-default">
                             <table id="example" class="display" cellspacing="0" width="100%">                     
                                 <thead> 
@@ -320,7 +320,7 @@ window.location.hash = '#start';
                 <div class="col-lg-6 col-md-6 col-s-6 col-xs-12">                                
                     </br>
                     </br>
-                    <p><b>Sentiment Analysis per Article Ratio</b></p>
+                    <p><b>Sentiment Analysis per Article Ratio</b> <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">?</button></p>
                 </div>
                 <div class="col-lg-5 col-md-5 col-s-5 col-xs-12 col-lg-offset-1 col-md-offset-1 col-s-offset-1"> 
                     <div class="ct-chart ct-square" id="chart1"></div>
@@ -333,7 +333,7 @@ window.location.hash = '#start';
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h1 align="left"; style="color:#2C3E50"; id="comparison";>Sector Comparison</h1>
+                    <h1 align="left"; style="color:#2C3E50"; id="comparison";>Sector Comparison <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">?</button></h1>
                     </br>
                 </div>
             </div>
@@ -352,7 +352,7 @@ window.location.hash = '#start';
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                     <h1> </h1>
                     <h1> </h1>
-                    <p><b>Sector: {{ asx[2] }}</b></p>
+                    <p><b>Sector: {{ asx[2] }}</b> <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">?</button></p>
                     <p style = "font-size:16px">Comparison between the closing prices of the selected company and three of the best-performing competitors in the same sector (ranked by Market Cap).</p>
                     </br>
                     </br>
@@ -399,7 +399,7 @@ window.location.hash = '#start';
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">  
                 </br>
                 </br>
-                    <p><b>GICS Industry Sectors - Market Cap Weight(%)</b></p>
+                    <p><b>GICS Industry Sectors - Market Cap Weight(%)</b> <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">?</button></p>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">  
                     <div class="ct-chart ct-square" id="chart2"></div>
@@ -463,6 +463,28 @@ window.location.hash = '#start';
         </a>
     </div>
 
+    
+      <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <p>Some text in the modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+    
     <!-- Portfolio Modals -->
     {% for item in news %}
     <div class="portfolio-modal modal fade" id="portfolioModal{{ item["date"] }}" tabindex="-1" role="dialog" aria-hidden="true">
