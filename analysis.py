@@ -66,6 +66,6 @@ def market_sentiment(data):
         
     
     vol = sqrt(avg(stdevs))     
-    marks.extend([days, sentiment, description, round(change,2), round(changeper,2), round(vol,2)*100, round(mean,2), peak, trough, best, worst, peakdate, troughdate, bestdate, worstdate, increases, decreases])
+    marks.extend([days, sentiment, description, round(change,2), round(changeper,2), round(vol,2)*10, round(mean,2), peak, trough, best, worst, peakdate, troughdate, bestdate, worstdate, increases, decreases])
     return marks
 

@@ -5,7 +5,7 @@ Created on Tue Aug 23 11:37:57 2016
 @author: meemee
 """
 from historical import query, query_compare, news_search
-from latest import latest_prices
+from latest import latest_prices, get_asx
 from search import get_company, compare
 from analysis import market_sentiment
 from flask import Flask, render_template, request, redirect, url_for
@@ -29,6 +29,7 @@ def get_price(company,start,end):
     sec = str(asx[2])
 
     late = latest_prices(cc)
+    asxdata=get_asx()
     new_query = query(cc, start, end)
     news = news_search(cc, new_query)
     
@@ -36,7 +37,7 @@ def get_price(company,start,end):
     competitors = compare(sec)
 
     comparison = query_compare(cc, competitors)
-    return render_template('index.html', asx=asx, comparison=comparison, market=market,
+    return render_template('index.html', asx=asx, asxdata=asxdata, comparison=comparison, market=market,
                            late=late, new_query=new_query,competitors=competitors, news=news)
 
 if __name__ == "__main__":

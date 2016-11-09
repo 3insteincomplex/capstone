@@ -51,4 +51,16 @@ def latest_prices(company):
 
     return latest 
     
-     
+def get_asx():
+    ccode = str("ASX.AX")
+    compdata = ysq.get_all(ccode)
+    pegr = compdata.get('price_earnings_growth_ratio')
+    per = compdata.get('price_earnings_ratio')
+    psr = compdata.get('price_sales_ratio')
+    new = {
+        "Price-Earnings Growth Ratio" : replace(pegr),
+        "Price-Earnings Ratio" : replace(per),
+        "Price-Sales Ratio" : replace(psr)
+        }
+    return new
+    
