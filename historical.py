@@ -11,7 +11,7 @@ start = past.strftime("%Y-%m-%d")
 end = now.strftime("%Y-%m-%d")
 
 import pymongo
-
+from textblob import TextBlob
 
 client = pymongo.MongoClient('mongodb://admin1:admin1@ds059306.mlab.com:59306/heroku_ph242ktw')
 db = client.get_default_database()
@@ -67,7 +67,13 @@ def news_search(company, data):
         for listing in new.find({"Date": date_n, "ASX code": ccode}).sort([
                              ("date", pymongo.ASCENDING)
                              ]):
-                                article = {"url": listing.get("URL"), "title": listing.get("Title"), "body": listing.get("Body")}
+                                url = listing.get("URL")
+                                title = listing.get("Title")
+                                body = listing.get("Body")
+                                blob = TextBlob(body)
+                                polar = blob.sentiment.polarity
+                                sent = round(polar, 2)
+                                article = {"url": url, "title": title, "body": body, "sentiment":sent}
                                 news.append(article)
 
         news_ = {

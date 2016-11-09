@@ -40,6 +40,7 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+  
 </head>
 
 <body id="page-top" class="index">
@@ -316,6 +317,13 @@ window.location.hash = '#start';
                         </div>
                 </div>
                 <!-- historical price table end --> 
+                <div class="col-lg-6 col-md-6 col-s-6 col-xs-12">                                
+                    </br>
+                    </br>
+                    <p><b>Sentiment Analysis</b></p>
+                </div>
+                <div class="col-lg-5 col-md-5 col-s-5 col-xs-12 col-lg-offset-1 col-md-offset-1 col-s-offset-1"> 
+                    <div class="ct-chart ct-square" id="chart1"></div>
             </div>
         </div>
     </section>
@@ -345,7 +353,7 @@ window.location.hash = '#start';
                     <h1> </h1>
                     <h1> </h1>
                     <p><b>Sector: {{ asx[2] }}</b></p>
-                    <p style = "font-size:16px">Comparison between the selected company and three of its best competitors in the same sector.</p>
+                    <p style = "font-size:16px">Comparison between the closing prices of the selected company and three of the best-performing competitors in the same sector (ranked by Market Cap).</p>
                     </br>
                     </br>
                     <p><b>Legend</b></p>
@@ -394,7 +402,7 @@ window.location.hash = '#start';
                     <p><b>GICS Industry Sectors - Market Cap Weight(%)</b></p>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">  
-                    <div class="ct-chart ct-square"></div>
+                    <div class="ct-chart ct-square" id="chart2"></div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1"> 
                     </br>
@@ -402,14 +410,14 @@ window.location.hash = '#start';
                     </br>
                     </br>                    
                     <div class="well" style="color:#000000; font-size:16px; width: 100%; height:300px">                    
-                        <p style="font-size:16px">Financials - 55%</p>
-                        <p style="font-size:16px">Materials - 11.4%</p>
-                        <p style="font-size:16px">Consumer Staples - 9.1%</p>
-                        <p style="font-size:16px">Telecommunication - 7%</p>                             
-                        <p style="font-size:16px">Health Care - 5.3%</p>                               
-                        <p style="font-size:16px">Real Estate - 4.8%</p>                               
-                        <p style="font-size:16px">Industrials - 4.6%</p>                                
-                        <p style="font-size:16px">Energy - 2.8%</p>                               
+                        <p style="font-size:16px"><font color="#d70206">Financials - 55%</font></p>
+                        <p style="font-size:16px"><font color="#f05b4f">Materials - 11.4%</font></p>
+                        <p style="font-size:16px"><font color="#f4c63d">Consumer Staples - 9.1%</font></p>
+                        <p style="font-size:16px"><font color="#d17905">Telecommunication - 7%</font></p>                             
+                        <p style="font-size:16px"><font color="#453d3f">Health Care - 5.3%</font></p>                               
+                        <p style="font-size:16px"><font color="#59922b">Real Estate - 4.8%</font></p>                               
+                        <p style="font-size:16px"><font color="#0544d3">Industrials - 4.6%</font></p>                                
+                        <p style="font-size:16px"><font color="#6b0392">Energy - 2.8%</font></p>                               
                     </div>
                 </div>
             </div>
@@ -488,7 +496,7 @@ window.location.hash = '#start';
                                         <td><strong><a href="{{ article["url"] }}">Go To Page</a></strong></td>
                                         <td>{{ article["title"] }}</td>
                                         <td>{{ article["body"] }}</td>
-                                        <td>0</td>
+                                        <td>{{ article["sentiment"] }}</td>
                                         </tr>
                                         {% endfor %}
                                     </tbody> 
@@ -523,9 +531,9 @@ window.location.hash = '#start';
     
     <!-- ProgressBar.js -->
     <script src="https://rawgit.com/kimmobrunfeldt/progressbar.js/1.0.0/dist/progressbar.js"></script>
-       <script>
-
-var bar = new ProgressBar.Circle(circle2, {
+    
+    <script>
+  var bar = new ProgressBar.Circle(circle2, {
   color: '#aaa',
   // This has to be the same size as the maximum width to
   // prevent clipping
@@ -619,9 +627,48 @@ bar.animate(1.0);  // Number from 0.0 to 1.0
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
     <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js">
     </script>
-    <script>
     
-var chart = new Chartist.Pie('.ct-chart', {
+    <style>
+.ct-label {
+    color: white;
+    fill: white;
+    font-size: 1.8rem;
+    line-height: 1;
+}
+</style>  
+    
+    <script>
+ var data = {
+  labels: ['Negative - 50%', 'Neutral - 10%', 'Positive - 40%'],
+  series: [50,10,40]
+};
+
+var options = {
+  labelInterpolationFnc: function(value) {
+    return value[0]
+  }
+};
+
+var responsiveOptions = [
+  ['screen and (min-width: 640px)', {
+    chartPadding: 0,
+    labelOffset: 50,
+    labelInterpolationFnc: function(value) {
+      return value;
+    }
+  }],
+  ['screen and (min-width: 1024px)', {
+    labelOffset: 50,
+    chartPadding: 0
+  }]
+];
+
+new Chartist.Pie('#chart1', data, options, responsiveOptions);                                
+                                 
+</script>                                   
+<script>
+    
+var chart = new Chartist.Pie('#chart2', {
   series: [55, 11, 9, 7, 5, 5, 5, 3],
   labels: [1, 2, 3, 4, 5, 6, 7, 8]
 }, {
