@@ -422,14 +422,14 @@ window.location.hash = '#overview';
                     </br>
                     </br>                    
                     <div class="well" style="color:#000000; font-size:16px; width: 100%;">                    
-                        <p style="font-size:16px"><span class="glyphicon glyphicon-cloud" style="color:#d70206"></span>  Financials - 55%</p>
-                        <p style="font-size:16px"><span class="glyphicon glyphicon-cloud" style="color:#f05b4f"></span>  Materials - 11.4%</p>
-                        <p style="font-size:16px"><span class="glyphicon glyphicon-cloud" style="color:#f4c63d"></span>  Consumer Staples - 9.1%</p>
-                        <p style="font-size:16px"><span class="glyphicon glyphicon-cloud" style="color:#d17905"></span>  Telecommunication - 7%</p>                             
-                        <p style="font-size:16px"><span class="glyphicon glyphicon-cloud" style="color:#453d3f"></span>  Health Care - 5.3%</p>                               
-                        <p style="font-size:16px"><span class="glyphicon glyphicon-cloud" style="color:#59922b"></span>  Real Estate - 4.8%</p>                               
-                        <p style="font-size:16px"><span class="glyphicon glyphicon-cloud" style="color:#0544d3"></span>  Industrials - 4.6%</p>                                
-                        <p style="font-size:16px"><span class="glyphicon glyphicon-cloud" style="color:#6b0392"></span>  Energy - 2.8%</p>                               
+                        <p style="font-size:16px"><span class="glyphicon glyphicon-cloud" style="color:#d70206"></span>  Financials: 55%</p>
+                        <p style="font-size:16px"><span class="glyphicon glyphicon-cloud" style="color:#f05b4f"></span>  Materials: 11.4%</p>
+                        <p style="font-size:16px"><span class="glyphicon glyphicon-cloud" style="color:#f4c63d"></span>  Consumer Staples: 9.1%</p>
+                        <p style="font-size:16px"><span class="glyphicon glyphicon-cloud" style="color:#d17905"></span>  Telecommunication: 7%</p>                             
+                        <p style="font-size:16px"><span class="glyphicon glyphicon-cloud" style="color:#453d3f"></span>  Health Care: 5.3%</p>                               
+                        <p style="font-size:16px"><span class="glyphicon glyphicon-cloud" style="color:#59922b"></span>  Real Estate: 4.8%</p>                               
+                        <p style="font-size:16px"><span class="glyphicon glyphicon-cloud" style="color:#0544d3"></span>  Industrials: 4.6%</p>                                
+                        <p style="font-size:16px"><span class="glyphicon glyphicon-cloud" style="color:#6b0392"></span>  Energy: 2.8%</p>                               
                     </div>
                 </div>
             </div>
@@ -796,7 +796,7 @@ window.location.hash = '#overview';
                                         <td><strong><a href="{{ article["url"] }}">Go To Page</a></strong></td>
                                         <td>{{ article["title"] }}</td>
                                         <td>{{ article["body"] }}</td>
-                                        <td>{{ article["sentiment"] }}</td>
+                                        {% if article["sentiment"] < 50.0 %}<td>{{ article["sentiment"] }}%: negative/neutral</td>{% else %} <td>{{ article["sentiment"] }}%: positive</td>{% endif %}
                                         </tr>
                                         {% endfor %}
                                     </tbody> 
@@ -939,7 +939,7 @@ bar.animate(1.0);  // Number from 0.0 to 1.0
     
     <script>
  var data = {
-  labels: ['Negative - 50%', 'Neutral - 10%', 'Positive - 40%'],
+  labels: ['Negative: 50%', 'Neutral: 10%', 'Positive: 40%'],
   series: [50,10,40]
 };
 

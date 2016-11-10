@@ -72,7 +72,7 @@ def news_search(company, data):
                                 body = listing.get("Body")
                                 blob = TextBlob(body)
                                 polar = blob.sentiment.polarity
-                                sent = round(polar, 2)
+                                sent = round(polar, 2)*1000
                                 article = {"url": url, "title": title, "body": body, "sentiment":sent}
                                 news.append(article)
 
