@@ -40,7 +40,12 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-  
+<style>
+span.glyphicon-cloud {
+    font-size: 1.2em;
+}
+</style>  
+
 </head>
 
 <body id="page-top" class="index">
@@ -163,7 +168,7 @@ window.location.hash = '#overview';
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h1 align="left"; style="color:#2C3E50"; id="overview";>Performance Overview <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">?</button></h1>
+                    <h1 align="left"; style="color:#2C3E50"; id="overview";>Performance Overview <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal1">?</button></h1>
                     </br>
                 </div>
             </div>
@@ -176,7 +181,7 @@ window.location.hash = '#overview';
                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
                     <h1>   </h1>
                     <h1>   </h1>
-                    <p><b>Today's Quotes</b> <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">?</button></p>
+                    <p><b>Today's Quotes</b> <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal2">?</button></p>
                     <div class="panel panel-default">
                             <table class="table" style="font-size:13px;">
                                 <tr>
@@ -225,14 +230,14 @@ window.location.hash = '#overview';
                 <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
                     <h1>   </h1>
                     <h1>   </h1>
-                    <p><b>Market Sentiment: {% if market[1] == "Bullish"%}<span class="label label-success"> {% else %} <span class="label label-danger">{% endif %}{{ market[1] }}</span></b> <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">?</button></p>
+                    <p><b>Market Sentiment: {% if market[1] == "Bullish"%}<span class="label label-success"> {% else %} <span class="label label-danger">{% endif %}{{ market[1] }}</span></b> <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal3">?</button></p>
                     <div class="well" style="color:#000000; font-size:16px;">
                         <p style="font-size:16px">Over the duration of <font color="#4E92BF">{{ market[0] }} days</font>, the stock for 
                         {{ asx[1] }} ({{ asx[0] }}){% if market[1] == "Bullish"%}<font color="#49A36A"> {% else %} <font color="#f44250">{% endif %} 
                                                                                                 {{ market[2] }} by {{ market[3] }} ({{ market[4] }}%).</font></p>
                         <p style="font-size:16px">Stock has a {% if market[5] < 18.5 %}<font color="#49A36A">{% else %}<font color="#f44250">{% endif %}volatility of {{ market[5] }}%</font> compared to the ASX200 average of 18.5%. <p>
                         <p style="font-size:16px">The average closing price for this period was <font color="#49A36A">AU${{ market[6] }}</font>.<p>
-                        <p style="font-size:16px">The highest value for by the daily high was <font color="#49A36A">AU${{ market[7] }}</font> on <font color="#4E92BF">{{ market[11] }}</font>.</p>
+                        <p style="font-size:16px">The highest value for the daily high was <font color="#49A36A">AU${{ market[7] }}</font> on <font color="#4E92BF">{{ market[11] }}</font>.</p>
                         <p style="font-size:16px">The lowest value for the daily low was <font color="#f44250">AU${{ market[8] }}</font> on <font color="#4E92BF">{{ market[12] }}</font>.</p>
                         <p style="font-size:16px">The highest value for closing prices was <font color="#49A36A">AU${{ market[9] }}</font> on <font color="#4E92BF">{{ market[13] }}</font>.</p>
                         <p style="font-size:16px">The lowest value for closing price was <font color="#f44250">AU${{ market[10] }}</font> on <font color="#4E92BF">{{ market[14] }}</font>.</p>
@@ -243,7 +248,7 @@ window.location.hash = '#overview';
                 <!-- performance overview end -->
                 <div class="col-lg-12 col-md-12 col-sm-12">
                 </br>
-                <p><b>Key Ratios</b> <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">?</button></p>
+                <p><b>Key Ratios</b> <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal4">?</button></p>
                 </div>
             
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
@@ -267,7 +272,7 @@ window.location.hash = '#overview';
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h1 align="left"; style="color:#2C3E50"; id="historical";>Historical Data <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">?</button></h1>
+                    <h1 align="left"; style="color:#2C3E50"; id="historical";>Historical Data <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal5">?</button></h1>
                     </br>
                 </div>
             </div>
@@ -280,14 +285,14 @@ window.location.hash = '#overview';
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">  
                     <h1>   </h1>
                     <h1>   </h1>
-                    <p><b>Historical Closing Prices</b> <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">?</button></p>
+                    <p><b>Historical Closing Prices</b> <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal6">?</button></p>
                     <div id="chartdiv2" style="width:100%; height:500px; font-size:11px; color:#FFFFFF; background-color: #2C3E50;"></div>
                 </div>
                 <!-- historical price table start -->
                 <div class="col-lg-6 col-md-6 col-s-6 col-xs-12">                                
                     </br>
                     </br>
-                    <p><b>Price & Article Lookup</b> <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">?</button></p>
+                    <p><b>Price & Article Lookup</b> <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal7">?</button></p>
                         <div class="panel panel-default">
                             <table id="example" class="display" cellspacing="0" width="100%">                     
                                 <thead> 
@@ -322,8 +327,8 @@ window.location.hash = '#overview';
                 <!-- historical price table end --> 
                 <div class="col-lg-6 col-md-6 col-s-6 col-xs-12">                                
                     </br>
-                    </br>
-                    <p><b>Sentiment Analysis per Article Ratio</b> <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">?</button></p>
+                    </br
+                    <p><b>Average Sentiment</b> <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal8">?</button></p>
                 </div>
                 <div class="col-lg-5 col-md-5 col-s-5 col-xs-12 col-lg-offset-1 col-md-offset-1 col-s-offset-1"> 
                     <div class="ct-chart ct-square" id="chart1"></div>
@@ -337,7 +342,7 @@ window.location.hash = '#overview';
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h1 align="left"; style="color:#2C3E50"; id="comparison";>Sector Comparison <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">?</button></h1>
+                    <h1 align="left"; style="color:#2C3E50"; id="comparison";>Sector Comparison <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal9">?</button></h1>
                     </br>
                 </div>
             </div>
@@ -356,9 +361,12 @@ window.location.hash = '#overview';
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                     <h1> </h1>
                     <h1> </h1>
-                    <p><b>Sector: {{ asx[2] }}</b> <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">?</button></p>
-                    <p style = "font-size:16px">Comparison between the closing prices of the selected company and three of the best-performing competitors in the same sector (ranked by Market Cap).</p>
+                    <p><b>Sector: {{ asx[2] }}</b> <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal10">?</button></p>
+                    <p style = "font-size:16px">Comparison between the closing prices of the selected company and three competitors in the same sector with the highest Market Cap.</p>
                     </br>
+                    <img class="img-responsive" src="static/img/divider.png" alt="">
+                    <img class="img-responsive" src="static/img/divider.png" alt="">
+                    <img class="img-responsive" src="static/img/divider.png" alt="">
                     </br>
                     <p><b>Legend</b></p>
                     <div class="panel panel-default">
@@ -403,7 +411,7 @@ window.location.hash = '#overview';
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">  
                 </br>
                 </br>
-                    <p><b>GICS Industry Sectors - Market Cap Weight(%)</b> <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">?</button></p>
+                    <p><b>GICS Industry Sectors - Market Cap Weight(%)</b> <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal11">?</button></p>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">  
                     <div class="ct-chart ct-square" id="chart2"></div>
@@ -413,15 +421,15 @@ window.location.hash = '#overview';
                     </br>
                     </br>
                     </br>                    
-                    <div class="well" style="color:#000000; font-size:16px; width: 100%; height:300px">                    
-                        <p style="font-size:16px"><font color="#d70206">Financials - 55%</font></p>
-                        <p style="font-size:16px"><font color="#f05b4f">Materials - 11.4%</font></p>
-                        <p style="font-size:16px"><font color="#f4c63d">Consumer Staples - 9.1%</font></p>
-                        <p style="font-size:16px"><font color="#d17905">Telecommunication - 7%</font></p>                             
-                        <p style="font-size:16px"><font color="#453d3f">Health Care - 5.3%</font></p>                               
-                        <p style="font-size:16px"><font color="#59922b">Real Estate - 4.8%</font></p>                               
-                        <p style="font-size:16px"><font color="#0544d3">Industrials - 4.6%</font></p>                                
-                        <p style="font-size:16px"><font color="#6b0392">Energy - 2.8%</font></p>                               
+                    <div class="well" style="color:#000000; font-size:16px; width: 100%;">                    
+                        <p style="font-size:16px"><span class="glyphicon glyphicon-cloud" style="color:#d70206"></span>  Financials - 55%</p>
+                        <p style="font-size:16px"><span class="glyphicon glyphicon-cloud" style="color:#f05b4f"></span>  Materials - 11.4%</p>
+                        <p style="font-size:16px"><span class="glyphicon glyphicon-cloud" style="color:#f4c63d"></span>  Consumer Staples - 9.1%</p>
+                        <p style="font-size:16px"><span class="glyphicon glyphicon-cloud" style="color:#d17905"></span>  Telecommunication - 7%</p>                             
+                        <p style="font-size:16px"><span class="glyphicon glyphicon-cloud" style="color:#453d3f"></span>  Health Care - 5.3%</p>                               
+                        <p style="font-size:16px"><span class="glyphicon glyphicon-cloud" style="color:#59922b"></span>  Real Estate - 4.8%</p>                               
+                        <p style="font-size:16px"><span class="glyphicon glyphicon-cloud" style="color:#0544d3"></span>  Industrials - 4.6%</p>                                
+                        <p style="font-size:16px"><span class="glyphicon glyphicon-cloud" style="color:#6b0392"></span>  Energy - 2.8%</p>                               
                     </div>
                 </div>
             </div>
@@ -468,18 +476,99 @@ window.location.hash = '#overview';
     </div>
 
     
-      <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
+      <!-- Modal1 -->
+  <div class="modal fade" id="myModal1" role="dialog">
     <div class="modal-dialog">
     
-      <!-- Modal content-->
+      <!-- Modal content1-->
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
+          <h4 class="modal-title">What is this section all about?</h4>
         </div>
         <div class="modal-body">
-          <p>Some text in the modal.</p>
+          <p><b><i>Performance Overview</i></b> displays the latest quotes of the selected company. It highlights key points in their profile and current position in the market.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+       <!-- Modal2 -->
+  <div class="modal fade" id="myModal2" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content2-->
+      <div class="modal-content">
+        <div class="modal-header"
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Glossary</h4>
+        </div>
+        <div class="modal-body">
+          <p style="font-size:13px">A helpful guide to define terms used in <b><i>Today's Quotes</i></b>.</p>
+          <p style="font-size:13px"><b>Price:</b> the price of company stock at the end of the day's business in a financial market.</p>
+          <p style="font-size:13px"><b>Change from Previous Price:</b> the change in percentage between the previous day's closing price and the current closing price.</p>
+          <p style="font-size:13px"><b>Market Cap:</b> stands for Market Capitalisation. The market value of a company's outstanding shares. <i>(Stock Price x Total number of shares = Market Cap)</i></p>
+            <p style="font-size:13px"><b>Market Cap:</b> or <i>EPS</i> is the value of company profit divided by stock number. It indicates how much profit is earned with each stock.</p>
+          <p style="font-size:13px"><b>Yearly High:</b> the highest price the stock has traded at within the last twelve months. This is used to predict future price movement.</p>
+          <p style="font-size:13px"><b>Yearly Low:</b> the lowest price the stock has traded at within the last twelve months. This is used to predict future price movement.</p>
+          <p style="font-size:13px"><b>Fifty-Day Moving Average:</b> the company's closing prices averaged over the last fifty days. This is used to analyse price trends.</p>
+          <p style="font-size:13px"><b>Two Hundred-Day Moving Average:</b> the company's closing prices averaged over the last two hundred days. This is used to analyse price trends.</p>
+          <p style="font-size:13px"><b>Volume:</b> number of shares that were exchanged during a given day.</p>
+          <p style="font-size:13px"><b>Volume (Avg):</b> The total amount of shares traded over a longer period of time divided by the length of that period.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+       <!-- Modal3 -->
+  <div class="modal fade" id="myModal3" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content3-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">What is Market Sentiment?</h4>
+        </div>
+        <div class="modal-body">
+          <p style="font-size:13px"><b>Market Sentiment</b> is the the overall attitude of investors toward a particular security or financial market.</p>
+          <p style="font-size:13px"><b>Bullish Market</b> indicates a positive attitude where there is a rise in stock price due to a high volume of shares being exchanged.</p>
+          <p style="font-size:13px"><b>Bearish Market</b> indicates a negative attitude where there is a dip in stock price due to a low volume of shares being exchanged.</p>
+          <p style="font-size:13px"><b>Volatility</b> measures the degree of variation of a trading price over time. This is determined by the standard deviation of returns. It is normally compared to the percentage of volatility that ASX stock has. The higher the volatility, the riskier the stock.</p>
+          <p style="font-size:13px">***A bullish or bearish stock does not necessarily indicate the overall success of a stock. A bullish market is almost always preceded by a bearish market. This sentiment is merely used to analyse trends.***</p>
+          </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+       <!-- Modal4 -->
+  <div class="modal fade" id="myModal4" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content4-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">What are they and why are they important?</h4>
+        </div>
+        <div class="modal-body">
+          <p style="font-size:13px">These ratios provide a good measurement unit for comparison with other companies. They show how a company's valuation which allows it to be ranked by other companies in the same or similar sectors. In this case, it is best to compare these ratios to that of ASX to determine high or low valuation.</p>
+          <p style="font-size:13px"><b>Price to Earnings Growth Ratio or P/E Growth:</b> a valuation metric to compare Earnings per Share, the price of stock and its expected growth rate. Used to predict future potential for growth.</p>
+          <p style="font-size:13px"><b>Price to Earnings Ratio or P/E:</b>  a valuation metric to compare Earnings per Share and the price of stock. Used to determine how much an investor should expect to invest to earn $1 of company earnings.</p>
+          <p style="font-size:13px"><b>Price to Sales Ratio or P/S:</b> take the company's market capitalization (the number of shares multiplied by the share price) and divide it by the company's total sales over the past 12 months. The lower the ratio, the more attractive the investment.</p>
+
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -489,6 +578,191 @@ window.location.hash = '#overview';
     </div>
   </div>
     
+  
+    
+       <!-- Modal5 -->
+  <div class="modal fade" id="myModal5" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content5-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">What is this section all about?</h4>
+        </div>
+        <div class="modal-body">
+          <p><b><i>Historical Data</i></b> displays a range quotes of the selected company over a selected period of time. It also displays the relevant news articles about the selected company that where published during this time and measures their positivity or negativity.</p>
+        </div>        
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+       <!-- Modal6 -->
+  <div class="modal fade" id="myModal6" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content6-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">What does this graph mean and how do I use it?</h4>
+        </div>
+        <div class="modal-body">
+         <p style="font-size:13px">This graph displays the <b>closing prices</b> trends for the given period. The red boxes indicate that the opening price was higher than the closing price. The green boxes indicate that the closing price is higher than the opening price. The empty boxes indicate that the closing price and opening price are the same.</p>
+          <p style="font-size:13px"><b>To zoom into any part of this graph:</b></br>1) Click and drag the buttons on either side of the slider on top of the graph towards the left (going forward in time) or towards the right (going back in time).</br>2) Click and drag within the graph's area to select a certain set of dates within a given range.</p>
+        <p style="font-size:13px"><b>To download this dataset:</b> Go to the arrow icon on the bottom left hand side of the graph and select 'Save As'. Select the format that you wish to save the data in.</p>
+        <img class="img-responsive" src="static/img/historical_saveas.png" alt="">
+        <p style="font-size:13px"><b>To download this graph:</b> Go to the arrow icon on the bottom left hand side of the graph and select 'Download As'. Select the format that you wish to save the graph in.</p>
+        <img class="img-responsive" src="static/img/historical_downloadas.png" alt="">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+    
+       <!-- Modal7 -->
+  <div class="modal fade" id="myModal7" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content7-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">What does this table mean and how do I use it?</h4>
+        </div>
+        <div class="modal-body">
+         <p style="font-size:13px">This table displays the <b>closing prices</b> trend for the given period corresponding to the <b>'Historical Closing Prices'</b> graph above. You can use the search bar on the top right corner of this table to narrow the entries down. Use the arrow keys beside each table heading to change the sort by <b>Ascending</b> or <b>Descending</b></p>
+         <p style="font-size:13px"><b>Close:</b> closing price.</p>
+        <p style="font-size:13px"><b>Open:</b> opening price</p>
+        <p style="font-size:13px"><b>High:</b> highest price reached within that day.</p>
+        <p style="font-size:13px"><b>Low:</b> lowest price reached within that day.</p>
+        <p style="font-size:13px"><b>Articles:</b> shows the number of articles published about the selected company on the given day. Clink on this link to see the article link, title, body and sentiment.</p>
+        <p style="font-size:13px"><b>Sentiment:</b> indicates the positivity or negativity of an article within a range of 0-1.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+    
+       <!-- Modal8 -->
+  <div class="modal fade" id="myModal8" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content8-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">What is the average sentiment?</h4>
+        </div>
+        <div class="modal-body">
+            <p style="font-size:13px">This section shows the sum of all article <b>sentiments</b> divided by the number of articles about this company. <b>Sentiment measures the positivity or negativity of each article.</b></p>
+          <p style="font-size:13px"><b>Negative:</b> percentage of negative articles from the total number of articles.</p>
+                    <p style="font-size:13px"><b>Neutral:</b> percentage of neutral articles from the total number of articles.</p>
+                              <p style="font-size:13px"><b>Positive:</b> percentage of positive articles from the total number of articles.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+    
+      
+       <!-- Modal9 -->
+  <div class="modal fade" id="myModal9" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content9-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">What is this section all about?</h4>
+        </div>
+        <div class="modal-body">
+          <p><b><i>Sector Comparison</i></b> conducts a comparative analysis between the selected company and how it performs in its sector. It also displays how that sector is performing in the ASX stock market.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+    
+    
+       <!-- Modal10 -->
+  <div class="modal fade" id="myModal10" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content10-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">What does this graph mean and how do I use it?</h4>
+        </div>
+        <div class="modal-body">
+         <p style="font-size:13px">This graph displays the <b>closing prices</b> trends for the given period for the selected company and three other companies in the same sector. To determine which companies are being tracked on the graph, refer to 'Legend' table below.</p>
+          <p style="font-size:13px"><b>To zoom into any part of this graph:</b></br>1) Click and drag the buttons on either side of the slider on top of the graph towards the left (going forward in time) or towards the right (going back in time).</br>2) Click and drag within the graph's area to select a certain set of dates within a given range.</p>
+        <p style="font-size:13px"><b>To download this dataset:</b> Go to the arrow icon on the bottom left hand side of the graph and select 'Save As'. Select the format that you wish to save the data in.</p>
+        <img class="img-responsive" src="static/img/historical_saveas.png" alt="">
+        <p style="font-size:13px"><b>To download this graph:<b> Go to the arrow icon on the bottom left hand side of the graph and select 'Download As'. Select the format that you wish to save the graph in.</p>
+        <img class="img-responsive" src="static/img/historical_downloadas.png" alt="">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+    
+       <!-- Modal11 -->
+  <div class="modal fade" id="myModal11" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content11-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">What are the GICS Industry Sectors?</h4>
+        </div>
+        <div class="modal-body">
+          <p style="font-size:13px">GICS consists of </b>8 Sectors</b> aggregated from <b>24 Industry Groups</b>, <b>67 Industries</b>, and <b>147 Sub-Industries</b> currently covering over <b>27,000 companies</b> globally. This graph is organised by the sector's Market Cap (market capitalisation or the number of stocks multiplied by the closing price) weight in percentage.</p>
+          <p style="font-size:13px"><b>Financials:</b> contains companies involved in activities such as banking, consumer finance, specialised finance, investment banking and brokerage, asset management and custody.</p>
+          <p style="font-size:13px"><b>Materials:</b> encompasses a wide range of commodity-related manufacturing industries. Included in this sector are companies that manufacture chemicals, construction materials, glass, paper, forest products and related packaging products, and metals, minerals and mining companies, including producers of steel.</p>
+        <p style="font-size:13px"><b>Consumer Staples:</b> comprises companies whose businesses are less sensitive to economic cycles. It includes manufacturers and distributors of food, beverages and tobacco and producers of non-durable household goods and personal products.</p>
+        <p style="font-size:13px"><b>Telecommunication:</b> contains companies that provide communications services primarily through a fixed-line, cellular, wireless, high bandwidth and/or fiber optic cable network.</p>
+    <p style="font-size:13px"><b>Health Care:</b> encompasses two main industry groups. The first includes companies who manufacture health care equipment and supplies or provide health care related services, and owners and operators of health care products, providers of basic health-care services, and owners and operators of health care facilities and organisations. The second group includes companies primarily involved in the research, development, production and marketing of pharmaceuticals and biotechnology products.</p>
+<p style="font-size:13px"><b>Real Estate:</b> contains companies involved in activities such as mortgage finance and real estate, including REITs.</p>
+<p style="font-size:13px"><b>Industrials:</b> includes companies whose businesses are dominated by one of the following activities: the manufacture and distribution of capital goods, including aerospace & defense, construction, engineering & building products, electrical equipment and industrial machinery; or, the provision of commercial services and supplies, including printing, employment, environmental and office services; or, the provision of transportation services, including airlines, couriers, marine, road & rail and transportation infrastructure.</p>
+<p style="font-size:13px"><b>Energy:</b> comprises companies whose businesses are dominated by either of the following activities: the construction or provision of oil rigs, drilling equipment and other energy related service and equipment, including seismic data collection; or, companies engaged in the exploration, production, marketing, refining and/or transportation of oil and gas products, coal and other consumable fuels.</p>
+
+          </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+    
+    
+    
+  
     <!-- Portfolio Modals -->
     {% for item in news %}
     <div class="portfolio-modal modal fade" id="portfolioModal{{ item["date"] }}" tabindex="-1" role="dialog" aria-hidden="true">
@@ -505,7 +779,7 @@ window.location.hash = '#overview';
                         <div class="modal-body">
                             <h2>Newspaper Mode</h2>
                             <hr class="star-primary">
-                            <p><i>This section provides a collection of articles published on the selected date. (currently using test data)</i></p>
+                            <p><i>This section provides a collection of articles published on the selected date.</i></p>
                             <div class="panel panel-default">
                                 <table class="table">                     
                                     <thead> 
@@ -676,6 +950,13 @@ var options = {
 };
 
 var responsiveOptions = [
+   ['screen and (max-width: 640px)', {
+    chartPadding: 0,
+    labelOffset: 30,
+    labelInterpolationFnc: function(value) {
+      return value;
+    }
+  }],
   ['screen and (min-width: 640px)', {
     chartPadding: 0,
     labelOffset: 30,
