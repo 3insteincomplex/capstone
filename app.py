@@ -4,7 +4,7 @@ Created on Tue Aug 23 11:37:57 2016
 
 @author: meemee
 """
-from historical import query, query_compare, news_search
+from historical import query, query_compare, news_search, news_ratio
 from latest import latest_prices, get_asx
 from search import get_company, compare
 from analysis import market_sentiment
@@ -19,6 +19,7 @@ def lookup():
         start =request.form['from-date']
         end = request.form['to-date']
         company =request.form['keyword']
+        
         return redirect(url_for('get_price', start=start, end = end, company=company))
     return render_template('home.html')
 
@@ -32,12 +33,14 @@ def get_price(company,start,end):
     asxdata=get_asx()
     new_query = query(cc, start, end)
     news = news_search(cc, new_query)
+    ratio = news_ratio(news)
+    
     
     market = market_sentiment(new_query)
     competitors = compare(sec)
 
     comparison = query_compare(cc, competitors)
-    return render_template('index.html', asx=asx, asxdata=asxdata, comparison=comparison, market=market,
+    return render_template('index.html', asx=asx,ratio=ratio, asxdata=asxdata, comparison=comparison, market=market,
                            late=late, new_query=new_query,competitors=competitors, news=news)
 
 if __name__ == "__main__":
