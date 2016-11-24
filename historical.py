@@ -67,14 +67,14 @@ def news_search(company, data):
         for listing in new.find({"Date": date_n, "ASX code": ccode}).sort([
                              ("date", pymongo.ASCENDING)
                              ]):
-                                url = listing.get("URL")
-                                title = listing.get("Title")
-                                body = listing.get("Body")
-                                blob = TextBlob(body)
-                                polar = blob.sentiment.polarity
-                                sent = round(polar*100, 2)
-                                article = {"url": url, "title": title, "body": body, "sentiment":sent}
-                                news.append(article)
+                                    url = listing.get("URL")
+                                    title = listing.get("Title")
+                                    body = listing.get("Body")
+                                    blob = TextBlob(body)
+                                    polar = blob.sentiment.polarity
+                                    sent = round(polar*100, 2)
+                                    article = {"url": url, "title": title, "body": body, "sentiment":sent}
+                                    news.append(article)
 
         news_ = {
               "articles": news,
@@ -95,19 +95,20 @@ def news_ratio(data):
     neutral = 0
     total = 0
     for articles in data:
-        article = articles.get("articles")
-        for item in article:
-            total += 1
-            sent = item.get("sentiment")
-            pol = float(sent)
+        if articles is not None:
+            article = articles.get("articles")
+            for item in article:
+                total += 1
+                sent = item.get("sentiment")
+                pol = float(sent)
 
-            if pol > 0:
-                pos += 1
-            elif pol < 0:
-                neg += 1
-            else:
-                neutral += 1
-    
+                if pol > 0:
+                    pos += 1
+                elif pol < 0:
+                    neg += 1
+                else:
+                    neutral += 1
+                    
     posperc = round(pos/float(total)*100,2)
     negperc = round(neg/float(total)*100,2)
     neutperc = round(neutral/float(total)*100,2)
