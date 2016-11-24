@@ -230,7 +230,7 @@ window.location.hash = '#overview';
                 <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
                     <h1>   </h1>
                     <h1>   </h1>
-                    <p><b>Market Sentiment: {% if market[1] == "Bullish"%}<span class="label label-success"> {% else %} <span class="label label-danger">{% endif %}{{ market[1] }}</span></b> <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal3">?</button></p>
+                    <p><b>Market Sentiment: {% if market[1] == "Bullish" %}<span class="label label-success"> {% else %} <span class="label label-danger">{% endif %}{{ market[1] }}</span></b> <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal3">?</button></p>
                     <div class="well" style="color:#000000; font-size:16px;">
                         <p style="font-size:16px">Over the duration of <font color="#4E92BF">{{ market[0] }} days</font>, the stock for 
                         {{ asx[1] }} ({{ asx[0] }}){% if market[1] == "Bullish"%}<font color="#49A36A"> {% else %} <font color="#f44250">{% endif %} 
@@ -316,7 +316,7 @@ window.location.hash = '#overview';
                                         {% if item["article_status"] != 0 %}
                                             <td> <a href="#portfolioModal{{ item["date"]  }}" class="portfolio-link" data-toggle="modal">Show {{ item["article_status"]}}</a> </td>  
                                         {% else %}
-                                            <td style="color:#000000">No articles</td>
+                                            <td style="color:#000000">None</td>
                                         {% endif %}
                                     </tr>                                   
                                 {% endfor %}
@@ -938,8 +938,8 @@ bar.animate(1.0);  // Number from 0.0 to 1.0
     
     <script>
  var data = {
-  labels: ['Negative: {{ ratio[1] }}%', 'Neutral: {{ ratio[2] }}%', 'Positive: {{ ratio[0] }}%'],
-  series: [{{ ratio[1] }},{{ ratio[2] }},{{ ratio[0] }}]
+  labels: [{% if ratio[0]==0 and ratio[1]==0 and ratio[2]==0 %}'Selection Contains 0 Articles', {% else %}'Negative: {{ ratio[1] }}%', 'Neutral: {{ ratio[2] }}%', 'Positive: {{ ratio[0] }}%'{% endif %}],
+  series: [{% if ratio[0]==0 and ratio[1]==0 and ratio[2]==0 %}100,{% else %}{{ ratio[1] }}, {{ ratio[2] }},{{ ratio[0] }}{% endif %}]
 };
 
 var options = {

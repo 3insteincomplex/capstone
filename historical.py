@@ -96,21 +96,31 @@ def news_ratio(data):
     total = 0
     for articles in data:
         article = articles.get("articles")
-        for item in article:
-            total += 1
-            sent = item.get("sentiment")
-            pol = float(sent)
+        if article is not None:
+            for item in article:
+                total += 1
+                sent = item.get("sentiment")
+                pol = float(sent)
 
-            if pol > 0:
-                pos += 1
-            elif pol < 0:
-                neg += 1
-            else:
-                neutral += 1
-    
-    posperc = round(pos/float(total)*100,2)
-    negperc = round(neg/float(total)*100,2)
-    neutperc = round(neutral/float(total)*100,2)
+                if pol > 0:
+                    pos += 1
+                elif pol < 0:
+                        neg += 1
+                else:
+                    neutral += 1
+    if pos != 0:
+        posperc = round(pos/float(total)*100,2)
+    else:
+        posperc = 0
+    if neg != 0:
+        negperc = round(neg/float(total)*100,2)
+    else: 
+        negperc = 0
+    if neutral != 0: 
+        neutperc = round(neutral/float(total)*100,2)
+    else:
+        neutperc = 0
+        
         
     ratio.append(posperc)
     ratio.append(negperc)
