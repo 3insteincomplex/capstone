@@ -73,11 +73,13 @@
                     </div>
                     <!-- Inline CSS based on choices in "Settings" tab -->
                     <p>Search the ASX200</p>
+                    <p style="color:#b42222">{{ errors }}</p>
                     <div class="bootstrap-iso">
                             <div class="col-md-8 col-sm-8 col-xs-8 col-md-offset-3 col-sm-offset-1 col-xs-offset-1">
                                 <form action="/" class="form-horizontal" method="post">
 
                                   <!-- Start from Date -->
+                            
                                   <div class="form-group col-md-8">
                                   <label class="control-label col-sm-4 requiredField" for="date">From:</label>
                                       <div class="col-sm-8">
@@ -127,6 +129,7 @@
                                       </div>
                                   </div>
                                   <!-- End submit -->
+                                
                                 </form>
                                 
                             </div>
@@ -138,26 +141,17 @@
     </header>
     
     <!-- error modal -->
-     <div class="modal fade" id="myModal" role="dialog">
+     <div class="modal fade" id="errModal" role="dialog">
     <div class="modal-dialog">
     
       <!-- Modal content11-->
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">What are the GICS Industry Sectors?</h4>
+          <h4 class="modal-title">Error</h4>
         </div>
         <div class="modal-body">
-          <p style="font-size:13px">GICS consists of </b>8 Sectors</b> aggregated from <b>24 Industry Groups</b>, <b>67 Industries</b>, and <b>147 Sub-Industries</b> currently covering over <b>27,000 companies</b> globally. This graph is organised by the sector's Market Cap (market capitalisation or the number of stocks multiplied by the closing price) weight in percentage.</p>
-          <p style="font-size:13px"><b>Financials:</b> contains companies involved in activities such as banking, consumer finance, specialised finance, investment banking and brokerage, asset management and custody.</p>
-          <p style="font-size:13px"><b>Materials:</b> encompasses a wide range of commodity-related manufacturing industries. Included in this sector are companies that manufacture chemicals, construction materials, glass, paper, forest products and related packaging products, and metals, minerals and mining companies, including producers of steel.</p>
-        <p style="font-size:13px"><b>Consumer Staples:</b> comprises companies whose businesses are less sensitive to economic cycles. It includes manufacturers and distributors of food, beverages and tobacco and producers of non-durable household goods and personal products.</p>
-        <p style="font-size:13px"><b>Telecommunication:</b> contains companies that provide communications services primarily through a fixed-line, cellular, wireless, high bandwidth and/or fiber optic cable network.</p>
-    <p style="font-size:13px"><b>Health Care:</b> encompasses two main industry groups. The first includes companies who manufacture health care equipment and supplies or provide health care related services, and owners and operators of health care products, providers of basic health-care services, and owners and operators of health care facilities and organisations. The second group includes companies primarily involved in the research, development, production and marketing of pharmaceuticals and biotechnology products.</p>
-<p style="font-size:13px"><b>Real Estate:</b> contains companies involved in activities such as mortgage finance and real estate, including REITs.</p>
-<p style="font-size:13px"><b>Industrials:</b> includes companies whose businesses are dominated by one of the following activities: the manufacture and distribution of capital goods, including aerospace & defense, construction, engineering & building products, electrical equipment and industrial machinery; or, the provision of commercial services and supplies, including printing, employment, environmental and office services; or, the provision of transportation services, including airlines, couriers, marine, road & rail and transportation infrastructure.</p>
-<p style="font-size:13px"><b>Energy:</b> comprises companies whose businesses are dominated by either of the following activities: the construction or provision of oil rigs, drilling equipment and other energy related service and equipment, including seismic data collection; or, companies engaged in the exploration, production, marketing, refining and/or transportation of oil and gas products, coal and other consumable fuels.</p>
-
+          <p style="font-size:13px"></p>
           </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -206,11 +200,11 @@
         startDate = new Date(selected.date.valueOf());
         startDate.setDate(startDate.getDate(new Date(selected.date.valueOf())));
         $(date_input2).datepicker('setStartDate', startDate);
-    }); 
+    })
+  
 
-        var date_input2=$('input[name="to-date"]'); //our date input has the name "date"
+           var date_input2=$('input[name="to-date"]'); //our date input has the name "date"
 		var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-
 		date_input2.datepicker({
 			format: 'yyyy-mm-dd',
 			container: container,

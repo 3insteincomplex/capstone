@@ -19,29 +19,51 @@ def lookup():
         start =request.form['from-date']
         end = request.form['to-date']
         company =request.form['keyword']
-        
         return redirect(url_for('get_price', start=start, end = end, company=company))
     return render_template('home.html')
 
 @app.route('/<string:company>+from=<string:start>to=<string:end>')
 def get_price(company,start,end):
-    asx = get_company(company)
-    cc = str(asx[0])
-    sec = str(asx[2])
+    try:
+        asx = get_company(company)
+        cc = str(asx[0])
+        sec = str(asx[2])
 
-    late = latest_prices(cc)
-    asxdata=get_asx()
-    new_query = query(cc, start, end)
-    news = news_search(cc, new_query)
-    ratio = news_ratio(news)
+        late = latest_prices(cc)
+        asxdata=get_asx()
+        new_query = query(cc, start, end)
+        news = news_search(cc, new_query)
+        ratio = news_ratio(news)
     
     
-    market = market_sentiment(new_query)
-    competitors = compare(sec)
+        market = market_sentiment(new_query)
+        competitors = compare(sec)
 
-    comparison = query_compare(cc, competitors)
-    return render_template('index.html', asx=asx,ratio=ratio, asxdata=asxdata, comparison=comparison, market=market,
-                           late=late, new_query=new_query,competitors=competitors, news=news)
+        comparison = query_compare(cc, competitors)
+        return render_template('index.html', asx=asx,ratio=ratio, asxdata=asxdata, comparison=comparison, market=market,
+                               late=late, new_query=new_query,competitors=competitors, news=news)
+    except:
+       errors = "No results found for the selected date range/company name. Please try again."                
+       return render_template('home.html', errors=errors)
+      
+@app.errorhandler(500)
+def internal_error(exception):
+    app.logger.error(exception)
+    errors = "No results found for the selected date range/company name. Please try again."                
+    return render_template('home.html', errors=errors), 500
+
+@app.errorhandler(404)
+def page_not_found_error(exception):
+    app.logger.error(exception)
+    errors = "Please enter a date range and company name."                
+    return render_template('home.html', errors=errors), 404
+
+@app.errorhandler(400)
+def bad_request(exception):
+    app.logger.error(exception)
+    errors = "Error processing request. Please try again."                
+    return render_template('home.html', errors=errors), 400
+    
 
 if __name__ == "__main__":
     app.run(debug = True)
