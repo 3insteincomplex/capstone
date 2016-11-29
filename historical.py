@@ -55,7 +55,7 @@ def query(company, start, end):
             "high": float(high)
             }
         comp_hist.append(parsep)
-    return comp_hist
+    return comp_hist    
     
 def news_search(company, data):
     news_data = []

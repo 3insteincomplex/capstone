@@ -96,6 +96,7 @@ window.location.hash = '#overview';
                         <span class="name">Sqwerpy</span>
                         <span class="skills">Simple finance Queries in Python</span>
                         <hr class="star-light">
+                        <p>Search the ASX200  <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModalASX">?</button></p>
                     </div>
                     <!-- Inline CSS based on choices in "Settings" tab -->
                     <div class="bootstrap-iso">
@@ -313,13 +314,13 @@ window.location.hash = '#overview';
                                         <td style="color:#000000"> {{ item["open"] }} </td>
                                         <td style="color:#000000"> {{ item["high"] }} </td>
                                         <td style="color:#000000"> {{ item["low"] }} </td>
-                                        {% if item["article_status"] != 0 %}
+                                    {% if item["article_status"] != 0 %}
                                             <td> <a href="#portfolioModal{{ item["date"]  }}" class="portfolio-link" data-toggle="modal">Show {{ item["article_status"]}}</a> </td>  
                                         {% else %}
                                             <td style="color:#000000">None</td>
                                         {% endif %}
                                     </tr>                                   
-                                {% endfor %}
+                                    {% endfor %}
                                 </tbody> 
                             </table>
                         </div>
@@ -327,7 +328,7 @@ window.location.hash = '#overview';
                 <!-- historical price table end --> 
                 <div class="col-lg-6 col-md-6 col-s-6 col-xs-12">                                
                     </br>
-                    </br
+                    </br>
                     <p><b>Average Sentiment</b> <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal8">?</button></p>
                 </div>
                 <div class="col-lg-5 col-md-5 col-s-5 col-xs-12 col-lg-offset-1 col-md-offset-1 col-s-offset-1"> 
@@ -760,6 +761,43 @@ window.location.hash = '#overview';
     </div>
   </div>
     
+  <!-- Modal1 -->
+  <div class="modal fade" id="myModalASX" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content1-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">List of ASX200 Companies</h4>
+        </div>
+        <div class="modal-body">
+        <table id="example2" class="display" cellspacing="0" width="100%">                     
+                                <thead> 
+                                    <tr>
+                                        <th style="color:#000000">Company Name</th>
+                                        <th style="color:#000000">Company Code</th>
+                                        <th style="color:#000000">Sector</th>
+                                    </tr>
+                                </thead> 
+                                <tbody>
+                                {% for item in asxl %}
+                                    <tr>
+                                        <td style="color:#000000"> {{ item["CompanyName"] }} </td>
+                                        <td style="color:#000000"> {{ item["CompanyCode"] }} </td>
+                                        <td style="color:#000000"> {{ item["Sector"] }} </td>
+                                    </tr>                                   
+                                    {% endfor %}
+                                </tbody> 
+                            </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
     
     
   
@@ -1075,6 +1113,7 @@ chart.on('draw', function(data) {
 <script>
 $(document).ready(function() {
     $('#example').DataTable();
+    $('#example2').DataTable();
 } );
 </script>
     

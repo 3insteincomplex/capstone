@@ -17,6 +17,20 @@ def get_company(company):
         compweight = histor.get("Weight", {})
     comp_inf.extend([compasx, compname, compsec, compmark, compweight])
     return comp_inf
+
+def asxlist():
+    asx200=[]
+    for item in comcode.find().sort([("Company name", pymongo.ASCENDING)]):
+        name = item.get('Company name')
+        code = item.get('ASX code')
+        sec = item.get('Sector')
+        asx = {
+            "CompanyName" : str(name),
+            "CompanyCode" : str(code),
+            "Sector" : str(sec)
+        }
+        asx200.append(asx)
+    return asx200
     
 def compare(sec):
     competitors=[]
